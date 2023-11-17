@@ -54,9 +54,6 @@ postgres_data
 local_pgdata
 pgadmin_data
 
-# Environment variables
-.env
-
 # Static files
 */staticfiles/
 staticfiles/
