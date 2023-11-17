@@ -26,6 +26,7 @@ api_authentication = [
 ]
 
 api_urlpatterns = [
+    path('', include('apps.accounts.api.urls'), name='user_api'),
     path('auth/', include(api_authentication)),
 ]
 
