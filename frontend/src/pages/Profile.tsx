@@ -9,13 +9,23 @@ import {
     IonButton,
     IonHeader,
     IonToolbar,
-    IonTitle, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButtons, IonBackButton, IonList
+    IonTitle,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonCardContent,
+    IonButtons,
+    IonBackButton,
+    IonList,
+    IonIcon
 } from '@ionic/react';
 import { User } from '../api/types';
 import {useUser} from "../hooks/useUser";
 import {formatDate} from "../utils/date";
 import authenticationService from '../api/services/authentication';
 import { useHistory } from 'react-router';
+import {addOutline} from "ionicons/icons";
 
 const UserProfilePage: React.FC = () => {
     const { user, getUser } = useUser();
@@ -37,57 +47,66 @@ const UserProfilePage: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                    <IonToolbar>
-                        <IonButtons slot="start">
-                            <IonBackButton defaultHref="/events" />
-                        </IonButtons>
-                        <IonTitle>Profile</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-                <IonContent>
-                    <IonList>
-                        <IonItem>
-                            <IonLabel>
-                                <h2>Email</h2>
-                                <p>
-                                    <IonInput value={editedUser?.email} />
-                                </p>
-                            </IonLabel>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel>
-                                <h2>First name</h2>
-                                <p>
-                                    <IonInput
-                                        value={editedUser?.first_name}
-                                        onIonChange={(e) => handleInputChange('first_name', e.detail.value!)}
-                                    />
-                                </p>
-                            </IonLabel>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel>
-                                <h2>Last name</h2>
-                                <p>
-                                    <IonInput
-                                        value={editedUser?.last_name}
-                                        onIonChange={(e) => handleInputChange('last_name', e.detail.value!)}
-                                    />
-                                </p>
-                            </IonLabel>
-                        </IonItem>
-                        <IonItem className="ion-text-center" lines="none">
-                            <IonButton expand="full" onClick={handleSave}>
-                                Save Changes
-                            </IonButton>
-                        </IonItem>
+                <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonBackButton defaultHref="/events" />
+                    </IonButtons>
+                    <IonTitle>Profile</IonTitle>
+                    <IonButtons slot="end">
+                        <IonButton
+                            onClick={() => {
+                                authenticationService.logout()
+                                    .then(() => {
+                                        history.push(`/login`)
+                                        window.location.reload();
+                                    })
+                            }}
+                            color="primary">
+                            Logout
+                        </IonButton>
+                    </IonButtons>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent>
+                <IonList>
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Email</h2>
+                            <p>
+                                <IonInput value={editedUser?.email} />
+                            </p>
+                        </IonLabel>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel>
+                            <h2>First name</h2>
+                            <p>
+                                <IonInput
+                                    value={editedUser?.first_name}
+                                    onIonChange={(e) => handleInputChange('first_name', e.detail.value!)}
+                                />
+                            </p>
+                        </IonLabel>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Last name</h2>
+                            <p>
+                                <IonInput
+                                    value={editedUser?.last_name}
+                                    onIonChange={(e) => handleInputChange('last_name', e.detail.value!)}
+                                />
+                            </p>
+                        </IonLabel>
+                    </IonItem>
+                    <IonItem className="ion-text-center" lines="none">
+                        <IonButton expand="full" onClick={handleSave}>
+                            Save Changes
+                        </IonButton>
+                    </IonItem>
 
-                    </IonList>
-                </IonContent>
-
-            <IonButton onClick={() => authenticationService.logout().then(() => history.push(`/login`))}>
-                Logout
-            </IonButton>
+                </IonList>
+            </IonContent>
         </IonPage>
     );
 };
