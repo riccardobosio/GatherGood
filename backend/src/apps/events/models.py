@@ -3,6 +3,9 @@ from apps.accounts.models.user import BaseModel, User
 
 
 class Event(BaseModel):
+    name = models.CharField(
+        verbose_name="Name of the event",
+    )
     creator = models.ForeignKey(
         verbose_name="Creator of event",
         to='accounts.User',
