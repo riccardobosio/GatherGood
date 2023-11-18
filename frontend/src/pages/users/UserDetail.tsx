@@ -57,7 +57,7 @@ const UserDetails: React.FC = () => {
                                         />
                                     ))}
                                     <p><strong>{review.description}</strong></p>
-                                    <p>Fecha de creación: {formatDate(review.created_at, false)}</p>
+                                    <p>{review.reviewer_name}, {formatDate(review.created_at, false)}</p>
                                 </IonCardContent>
                             </IonCard>
                         ))}

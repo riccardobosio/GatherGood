@@ -65,7 +65,7 @@ export interface Participant {
 
 export interface Review {
     id: string;
-    reviewee: string;
+    reviewer_name: string;
     rate: number;
     description: string;
     created_at: string;

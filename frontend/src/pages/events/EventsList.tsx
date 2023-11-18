@@ -61,7 +61,7 @@ const EventsList: React.FC = () => {
                         <IonCard key={event.id}>
                             <IonCardHeader>
                                 <IonCardTitle>{event.name}</IonCardTitle>
-                                <IonCardSubtitle>{formatDate(event.date)}</IonCardSubtitle>
+                                <IonCardSubtitle>{event.location}, {formatDate(event.date)}</IonCardSubtitle>
                             </IonCardHeader>
                             <IonCardContent>
                                 <p>{event.description}</p>
