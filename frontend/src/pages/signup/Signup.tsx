@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel, IonIcon, IonGrid, IonRow, IonCol, IonNav, IonTitle } from '@ionic/react';
 import { personOutline } from 'ionicons/icons';
-import './Signup.css';
-import Tab1 from '../Tab1';
 import { useHistory } from 'react-router-dom';
+import l from '../../assets/animations/introstrep4.json';
+import Lottie from 'lottie-react';
 
 interface FormData {
   name: string;
@@ -12,7 +12,7 @@ interface FormData {
 }
 
 const SignupForm: React.FC = () => {
-  const [formData, setFormData] = useState({name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const history = useHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,14 +28,14 @@ const SignupForm: React.FC = () => {
   };
 
   return (
-    <IonPage>
-      <IonContent className="ion-padding">
-        <IonGrid>
-          <IonRow>
-            <IonCol size='9' sizeSm='7' sizeMd='7' sizeLg='4' sizeXl='4'>
-            <IonTitle size="large" className='ion-text-center'>Title</IonTitle>
-              <form onSubmit={handleSubmit}>
-            <IonItem>
+    <IonGrid>
+      <IonContent className='centered-content'>
+        <IonRow className='centered-content'>
+          <IonCol size-xs="12" size-sm="10" size-md="6" size-lg="4">
+            <Lottie style={{ width: '100%', height: '300px'}} loop={true} animationData={l} />
+            <h2>¡Únete y siéntete mejor!</h2>
+            <form onSubmit={handleSubmit}>
+              <IonItem>
                 <IonLabel position="floating">Name</IonLabel>
                 <IonInput
                   name="name"
@@ -62,15 +62,14 @@ const SignupForm: React.FC = () => {
                   type="password"
                 />
               </IonItem>
-              <IonButton expand="block"  shape='round' type="submit" >
-                Sign Up
+              <IonButton className='custom-button login-btn-1 ion-margin-top ion-padding-vertical' shape='round' type="submit" >
+                Unirse
               </IonButton>
-              </form>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+            </form>
+          </IonCol>
+        </IonRow>
       </IonContent>
-    </IonPage>
+    </IonGrid>
   );
 };
 
