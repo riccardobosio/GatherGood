@@ -116,3 +116,45 @@ class EventDetailRetrieveUpdateDestroyAPI(
             return self.destroy(request, pk)
         else:
             raise ValidationError("Only creator of the event can delete it.")
+        
+class EventsJoinedAPI(CustomApiView, mixins.ListModelMixin):
+    api_description = "List joined events"
+    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    filterset_class = EventFilter
+    
+    def get_serializer_class(self):
+        return EventDetailSerializer
+
+    def get_queryset(self):
+        user: User = self.request.user
+        if user.is_authenticated:
+            return Event.objects.filter(participants__in=[user]).order_by('date')
+
+    @swagger_auto_schema(
+        operation_summary='Get list of joined events.',
+        operation_description=api_description,
+        operation_id='GetEventsJoinedList',
+    )
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+    
+class EventsCreatedAPI(CustomApiView, mixins.ListModelMixin):
+    api_description = "List created events"
+    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
+    filterset_class = EventFilter
+    
+    def get_serializer_class(self):
+        return EventDetailSerializer
+
+    def get_queryset(self):
+        user: User = self.request.user
+        if user.is_authenticated:
+            return Event.objects.filter(creator=user).order_by('date')
+
+    @swagger_auto_schema(
+        operation_summary='Get list of created events.',
+        operation_description=api_description,
+        operation_id='GetEventsCreatedList',
+    )
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
