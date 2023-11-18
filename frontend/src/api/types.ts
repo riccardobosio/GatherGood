@@ -43,5 +43,12 @@ export interface Event {
     max_people: number;
     date: string;
     description: string;
-    participants: string[];
+    participants: Participant[];
+}
+
+interface Participant {
+    id: string;
+    email: string;
+    first_name: string;
+    last_name: string;
 }
