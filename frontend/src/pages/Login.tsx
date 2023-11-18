@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel, IonApp, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router';
 import SignupForm from "../components/Signup";
 import { useUser } from "../hooks/useUser";
