@@ -32,7 +32,7 @@ class ReviewCreateAndListApi(CustomApiView):
     api_description = 'Create and List Reviews'
 
     @swagger_auto_schema(
-        operation_summary="ReviewCreate",
+        operation_summary="Create a new review.",
         operation_description=api_description,
         operation_id="ReviewCreate",
         responses={status.HTTP_201_CREATED: ReviewDetailOutputSerializer()},
@@ -48,7 +48,7 @@ class ReviewCreateAndListApi(CustomApiView):
         return Response(data=data, status=status.HTTP_201_CREATED)
 
     @swagger_auto_schema(
-        operation_summary="ReviewListRetrieve",
+        operation_summary="Get list of reviews.",
         operation_description=api_description,
         operation_id="ReviewListRetrieve",
         manual_parameters=[
@@ -81,7 +81,7 @@ class ReviewRetrieveAndUpdateApi(CustomApiView):
     api_description = 'Get and Patch Review By ID'
 
     @swagger_auto_schema(
-        operation_summary="ReviewRetrieve",
+        operation_summary="Retrieve review detail.",
         operation_description=api_description,
         operation_id="ReviewRetrieve",
         responses={status.HTTP_200_OK: ReviewDetailOutputSerializer()}
@@ -94,7 +94,7 @@ class ReviewRetrieveAndUpdateApi(CustomApiView):
         return Response(data=data, status=status.HTTP_200_OK)
 
     @swagger_auto_schema(
-        operation_summary="ReviewUpdateStatus",
+        operation_summary="Update review status.",
         operation_description=api_description,
         operation_id="ReviewUpdateStatus",
         responses={status.HTTP_200_OK: ReviewDetailOutputSerializer()},
