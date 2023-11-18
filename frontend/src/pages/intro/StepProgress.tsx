@@ -6,15 +6,19 @@ import is4 from '../../assets/animations/introstrep6.json';
 import is2 from '../../assets/animations/introstrep5.json';
 import './IndexIntro.css'
 import Lottie from 'lottie-react';
+import { IonContext } from '@ionic/react/dist/types/contexts/IonContext';
+import { useHistory } from 'react-router';
 
 const StepProgress: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const totalSteps = 3;
+  const history = useHistory();
 
   const renderDots = () => {
     let dots = [];
     for (let i = 0; i <= totalSteps; i++) {
       let dotColor;
+
       if (i === currentStep) {
         dotColor = 'grey'; // Color for the current step
       } else if (i < currentStep) {
@@ -39,6 +43,10 @@ const StepProgress: React.FC = () => {
 
   const stepController = {
     nextStep: () => {
+      if(currentStep === totalSteps) {
+        history.push('/signup');
+        return
+      }
       if (currentStep < totalSteps) {
         setCurrentStep(currentStep + 1);
       }
@@ -52,23 +60,22 @@ const StepProgress: React.FC = () => {
 
 
   return (
-    <IonApp>
-      <IonContent className="ion-padding ion-text-center">
-        <IonGrid className="ion-justify-content-center ion-align-items-center">
-          <IonRow className="ion-align-items-center">
-            <IonCol size-xs="12" size-sm="8" size-md="6" size-lg="4">
-              <div style={{ width: '100%', height: 'auto' }}>
-                {renderDots()}
-              </div>
-              <div>
-                {elementsArray[currentStep]}
-              </div>
-              <IonButton onClick={stepController.nextStep} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Segueix!</IonButton>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+    <IonGrid>
+      <IonContent className='centered-content'>
+        <IonRow className='centered-content'>
+          <IonCol size-xs="12" size-sm="10" size-md="6" size-lg="4">
+            <div style={{ width: '100%', height: 'auto' }}>
+              {renderDots()}
+            </div>
+            <div>
+              {elementsArray[currentStep]}
+            </div>
+            <IonButton onClick={stepController.nextStep} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Segueix!</IonButton>
+          </IonCol>
+        </IonRow>
       </IonContent>
-    </IonApp>
+    </IonGrid>
+
   );
 };
 
@@ -111,8 +118,8 @@ const Step4: React.FC = () => {
 const elementsArray: React.ReactElement[] = [
   <Step1 />,
   <Step2 />,
-  <Step3/>,
-  <Step4/>,
+  <Step3 />,
+  <Step4 />,
 ];
 
 export default StepProgress;

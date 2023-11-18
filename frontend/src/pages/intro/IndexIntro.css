@@ -21,13 +21,50 @@
   transition: 0.3s; /* Smooth transition for press effect */
 }
 
+.login-btn {
+  border-radius: 20px; /* Rounded edges */
+  font-weight: bold;
+  padding: 5px 20px; /* Smaller footprint */
+  transition: 0.3s; /* Smooth transition for press effect */
+  --border-color: rgb(174,108,194);
+}
+
+.login-btn-1 {
+  border-radius: 20px; /* Rounded edges */
+  font-weight: bold;
+  padding: 5px 20px; /* Smaller footprint */
+  transition: 0.3s; /* Smooth transition for press effect */
+  --background: black;
+  color: white;
+  --border-color: black;
+  --box-shadow: rgba(140, 132, 132, 0.1) 0px 4px 12px;
+}
+
+.login-btn-1:active {
+  box-shadow: 0 2px 4px rgba(204, 96, 96, 0.924); /* Pressed state shadow */
+  transform: translateY(2px); /* Pressed state movement */
+}
+
+
+.signin-btn {
+  --background: black;
+  color: white;
+  --border-color: black;
+  --box-shadow: rgba(140, 132, 132, 0.1) 0px 4px 12px;
+}
+
+.signin-btn:active {
+  box-shadow: 0 2px 4px rgb(174,108,194); /* Pressed state shadow */
+  transform: translateY(2px); /* Pressed state movement */
+}
+
 .custom-button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Pressed state shadow */
   transform: translateY(2px); /* Pressed state movement */
 }
 
 ion-button.signup-btn {
-  --background: rgb(174,108,194	);
+  --background: rgb(174,108,194);
   color: rgb(0, 0, 0);
   --border-color: black;
   --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -48,13 +85,15 @@ ion-button.login-btn {
   align-items: center;
 }
 
-/* Ensures full height so vertical centering works as expected */
-ion-content {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
 .test{
   border: 2px solid black;
+}
+/* App.css or global.css */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px; /* Full viewport height */
+  text-align: center;
 }
