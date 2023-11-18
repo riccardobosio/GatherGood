@@ -21,7 +21,7 @@ import authenticationService from '../api/services/authentication';
 import { useHistory } from 'react-router';
 
 const UserProfilePage: React.FC = () => {
-    const { user, getUser } = useUser();
+    const { user} = useUser();
     const [editedUser, setEditedUser] = useState<User | null | undefined>(user);
     const history = useHistory();
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import { IonApp, IonButton, IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToast, IonToolbar } from '@ionic/react'
+import { IonButton, IonCol, IonContent, IonGrid, IonRow, IonTitle } from '@ionic/react'
 import i1 from '../../assets/animations/intro2-animation.json';
 import './IndexIntro.css';
 import { useHistory } from 'react-router';
