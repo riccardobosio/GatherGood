@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from apps.accounts.api.views.common import CustomApiView
+from apps.accounts.models import User
 from apps.review.models import Review
 from apps.review.selectors import get_review, get_reviews
 from apps.review.serializers import (ReviewCreateInputSerializer,
@@ -12,6 +13,8 @@ from apps.review.serializers import (ReviewCreateInputSerializer,
                                      ReviewUpdateInputSerializer)
 from apps.review.services import create_review
 from apps.review.utils import update_model_object
+
+from django.shortcuts import get_object_or_404
 
 rate_params = openapi.Parameter(
     'rate',
@@ -43,7 +46,15 @@ class ReviewCreateAndListApi(CustomApiView):
         serializer = ReviewCreateInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        new_review: Review = create_review(reviewer=request.user, **serializer.data)
+        fetched_user = get_object_or_404(User, id=serializer.data['reviewee'])
+
+        new_review: Review = create_review(
+            reviewer=request.user,
+            reviewee=fetched_user,
+            rate=serializer.data['rate'],
+            description=serializer.data['description']
+        )
+
         data = ReviewDetailOutputSerializer(new_review).data
         return Response(data=data, status=status.HTTP_201_CREATED)
 
