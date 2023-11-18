@@ -42,14 +42,56 @@ import EventDetails from "./pages/events/EventDetail";
 import EventCreate from "./pages/events/EventCreate";
 import EventsList from "./pages/events/EventsList";
 import StepProgress from './pages/intro/StepProgress';
-import Intro1 from './pages/intro/Intro';
+import UserDetails from './pages/users/UserDetail';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonReactRouter>
     <UserProvider>
-    <Route exact path="/signup">
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/events">
+            <EventsList />
+          </Route>
+          <Route exact path="/events/:id">
+            <EventDetails />
+          </Route>
+          <Route exact path="/events/create">
+            <EventCreate />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path="/users/:id">
+            <UserDetails />
+          </Route>
+          <Route exact path="/tab2">
+            <Tab2 />
+          </Route>
+          <Route path="/tab3">
+            <Tab3 />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="Events" href="/events">
+            <IonIcon aria-hidden="true" icon={calendar} />
+            <IonLabel>Events</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="Profile" href="/profile">
+            <IonIcon aria-hidden="true" icon={person} />
+            <IonLabel>Profile</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab3" href="/tab3">
+            <IonIcon aria-hidden="true" icon={square} />
+            <IonLabel>Tab 3</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+      <Route exact path="/signup">
         <Signup />
       </Route>
       <Route exact path="/login">
@@ -59,7 +101,7 @@ const App: React.FC = () => (
         <StepProgress />
       </Route>
       <Route exact path="/">
-        <Intro1 />
+        <Intro />
       </Route>
     </UserProvider>
   </IonReactRouter>
