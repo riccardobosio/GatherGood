@@ -59,13 +59,13 @@ const EventDetails: React.FC = () => {
                         <IonButtons slot="start">
                             <IonBackButton defaultHref="/events" />
                         </IonButtons>
-                        <IonTitle>{event.name}</IonTitle>
+                        <IonTitle>{event.name} en {event.location}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
                     <IonList>
                         <IonItem>
-                            <IonLabel>
+                            <IonLabel style={{ whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}>
                                 <h2>Descripción</h2>
                                 <p>{event.description}</p>
                             </IonLabel>
