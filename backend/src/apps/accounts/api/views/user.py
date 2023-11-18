@@ -92,7 +92,7 @@ class RegistrationApi(CustomApiView):
     authentication_classes = ()
 
     @swagger_auto_schema(
-        operation_summary="Registration",
+        operation_summary="Registration.",
         operation_description=api_description,
         operation_id="Registration",
         request_body=RegistrationInputSerializer,
