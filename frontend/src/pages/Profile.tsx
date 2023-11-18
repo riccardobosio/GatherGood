@@ -1,5 +1,5 @@
 // src/pages/UserProfilePage.tsx
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
     IonPage,
     IonContent,
@@ -10,22 +10,15 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
     IonButtons,
     IonBackButton,
     IonList,
-    IonIcon
 } from '@ionic/react';
 import { User } from '../api/types';
 import {useUser} from "../hooks/useUser";
-import {formatDate} from "../utils/date";
+
 import authenticationService from '../api/services/authentication';
 import { useHistory } from 'react-router';
-import {addOutline} from "ionicons/icons";
 
 const UserProfilePage: React.FC = () => {
     const { user, getUser } = useUser();
