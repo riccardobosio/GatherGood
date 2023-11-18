@@ -33,12 +33,14 @@ export interface User {
     first_name: string;
     last_name: string;
     is_superuser: boolean;
+    reviews: Review[];
 }
 
 export interface Event {
     id: string;
     name: string;
     creator: string;
+    creator_name: string;
     location: string;
     max_people: number;
     date: string;
@@ -46,9 +48,17 @@ export interface Event {
     participants: Participant[];
 }
 
-interface Participant {
+export interface Participant {
     id: string;
     email: string;
     first_name: string;
     last_name: string;
+}
+
+export interface Review {
+    id: string;
+    reviewee: string;
+    rate: number;
+    description: string;
+    created_at: string;
 }

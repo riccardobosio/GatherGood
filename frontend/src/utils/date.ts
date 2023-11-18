@@ -1,4 +1,4 @@
-export function formatDate(inputDate: string): string {
+export function formatDate(inputDate: string, includeTime: boolean = true): string {
     const date = new Date(inputDate);
 
     // Check if the date is valid
@@ -18,8 +18,16 @@ export function formatDate(inputDate: string): string {
     };
 
     // Format the date
+    if (!includeTime) {
+        delete options.hour;
+        delete options.minute;
+        delete options.second;
+        delete options.timeZoneName;
+    }
+
     return date.toLocaleDateString('en-US', options);
 }
+
 
 export function getCurrentDateTime(): string {
     const currentDate = new Date();
