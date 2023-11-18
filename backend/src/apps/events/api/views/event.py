@@ -2,20 +2,21 @@ from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters, mixins, status
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError, NotAuthenticated
 from rest_framework.response import Response
 from apps.accounts.models import User
 from apps.accounts.api.views.common import CustomApiView
 from apps.events.filters import EventFilter
 from apps.events.models import Event
 from apps.events.serializers import EventCreateSerializer, EventDetailSerializer
+from apps.events.services import recommend_events
 
 
 class EventsAPI(CustomApiView, mixins.ListModelMixin):
     api_description = "List and create events"
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     filterset_class = EventFilter
-    
+
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return EventCreateSerializer
@@ -24,8 +25,25 @@ class EventsAPI(CustomApiView, mixins.ListModelMixin):
     def get_queryset(self):
         user: User = self.request.user
         current_datetime = timezone.now()
-        if user.is_authenticated:
-            return Event.objects.filter(date__gte=current_datetime).order_by('date')
+
+        if not user.is_authenticated:
+            raise NotAuthenticated
+
+        available_events = Event.objects.filter(date__gte=current_datetime)
+
+        joined_events = Event.objects.filter(participants__in=[user])
+
+        joined_events_list = [{'id': str(event.id), 'description': event.description} for event in
+                              joined_events]
+
+        available_events_list = [{'id': str(event.id), 'description': event.description} for event in available_events]
+
+        if joined_events.count() == 0 or available_events.count() == 0:
+            return available_events.order_by('date')
+
+        ordered_id_list = recommend_events(joined_events_list, available_events_list)
+
+        return sorted(available_events, key=lambda event: ordered_id_list.index(event.id))
 
     @swagger_auto_schema(
         operation_summary='Get list of events.',
@@ -34,7 +52,7 @@ class EventsAPI(CustomApiView, mixins.ListModelMixin):
     )
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-    
+
     @swagger_auto_schema(
         operation_summary='Create a new event.',
         operation_description=api_description,
@@ -72,7 +90,7 @@ class EventDetailRetrieveUpdateDestroyAPI(
         user: User = self.request.user
         if user.is_authenticated:
             return Event.objects.all()
-    
+
     def get_serializer_context(self):
         context = super().get_serializer_context()
         context['request'] = self.request
@@ -116,12 +134,13 @@ class EventDetailRetrieveUpdateDestroyAPI(
             return self.destroy(request, pk)
         else:
             raise ValidationError("Only creator of the event can delete it.")
-        
+
+
 class EventsJoinedAPI(CustomApiView, mixins.ListModelMixin):
     api_description = "List joined events"
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     filterset_class = EventFilter
-    
+
     def get_serializer_class(self):
         return EventDetailSerializer
 
@@ -137,12 +156,13 @@ class EventsJoinedAPI(CustomApiView, mixins.ListModelMixin):
     )
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-    
+
+
 class EventsCreatedAPI(CustomApiView, mixins.ListModelMixin):
     api_description = "List created events"
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     filterset_class = EventFilter
-    
+
     def get_serializer_class(self):
         return EventDetailSerializer
 
