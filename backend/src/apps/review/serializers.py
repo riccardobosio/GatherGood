@@ -10,9 +10,14 @@ class ReviewCreateInputSerializer(serializers.ModelSerializer):
 
 
 class ReviewDetailOutputSerializer(serializers.ModelSerializer):
+    reviewer_name = serializers.SerializerMethodField()
+
+    def get_reviewer_name(self, obj):
+        return obj.reviewer.first_name if obj else None
+
     class Meta:
         model = Review
-        fields = ('id', 'reviewee', 'rate', 'description', 'created_at')
+        fields = ('id', 'reviewer_name', 'rate', 'description', 'created_at')
 
 
 class ReviewUpdateInputSerializer(serializers.ModelSerializer):

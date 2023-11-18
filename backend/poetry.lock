@@ -286,6 +286,17 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-material-admin"
+version = "1.8.6"
+description = "Material Design For Django Administration"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-material-admin-1.8.6.tar.gz", hash = "sha256:2de97e804a55d478d1776d2fe011970087c6756b5998e528b673fbb6e1f8e5c4"},
+    {file = "django_material_admin-1.8.6-py3-none-any.whl", hash = "sha256:cbd44161c6e8bed8e4fe80a68f90971d22c8a1bc7e731360bec08e6f950917f9"},
+]
+
+[[package]]
 name = "django-split-settings"
 version = "1.2.0"
 description = "Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files."
@@ -1164,4 +1175,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "98d8f9821c4a9b151f4c86cbc3b32552cb2643dbf21db95252e4db1d352732cd"
+content-hash = "6dc3958e7827b9ec8ecbab8b9fafa4ad464162b551c7305d007821dfc49f5dbf"
