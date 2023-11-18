@@ -10,10 +10,9 @@ class ReviewCreateInputSerializer(serializers.ModelSerializer):
 
 
 class ReviewDetailOutputSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Review
-        fields = "__all__"
+        fields = ('id', 'reviewee', 'rate', 'description', 'created_at')
 
 
 class ReviewUpdateInputSerializer(serializers.ModelSerializer):
