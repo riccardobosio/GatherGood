@@ -18,6 +18,7 @@ case "$ENV" in
     python manage.py migrate &&
     python manage.py init_superuser &&
     python manage.py example_data &&
+    python manage.py loaddata sample_django_data.json &&
     python manage.py runserver 0.0.0.0:8000
     ;;
 "PROD_DJANGO")
@@ -25,6 +26,7 @@ case "$ENV" in
     python manage.py collectstatic --noinput &&
     python manage.py migrate &&
     python manage.py init_superuser &&
+    python manage.py loaddata sample_django_data.json &&
     gunicorn --config gunicorn_conf.py config.wsgi:application --log-level info
     ;;
 esac
