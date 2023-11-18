@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "recommender"
+version = "0.1.0"
+description = ""
+authors = ["Riccardo Bosio <riccardobosio18@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+gensim = "^4.3.2"
+scikit-learn = "^1.3.2"
+nltk = "^3.8.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
