@@ -1,18 +1,17 @@
+from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
 
-from apps.review.utils import update_model_object
 from apps.accounts.api.views.common import CustomApiView
 from apps.review.models import Review
 from apps.review.selectors import get_review, get_reviews
 from apps.review.serializers import (ReviewCreateInputSerializer,
                                      ReviewDetailOutputSerializer,
-                                     ReviewUpdateInputSerializer,
-                                     ReviewFilterSerializer)
+                                     ReviewFilterSerializer,
+                                     ReviewUpdateInputSerializer)
 from apps.review.services import create_review
-
-from drf_yasg import openapi
+from apps.review.utils import update_model_object
 
 rate_params = openapi.Parameter(
     'rate',

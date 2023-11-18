@@ -1,5 +1,8 @@
 from django.urls import path
-from apps.events.api.views.event import EventsAPI, EventDetailRetrieveUpdateDestroyAPI, EventsJoinedAPI, EventsCreatedAPI
+
+from apps.events.api.views.event import (EventDetailRetrieveUpdateDestroyAPI,
+                                         EventsAPI, EventsCreatedAPI,
+                                         EventsJoinedAPI)
 
 urlpatterns = [
     path('events/', EventsAPI.as_view(), name='events'),

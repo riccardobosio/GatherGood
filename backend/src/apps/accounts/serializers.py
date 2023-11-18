@@ -1,5 +1,6 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
+
 from apps.accounts.models.user import User
 from apps.review.serializers import ReviewDetailOutputSerializer
 

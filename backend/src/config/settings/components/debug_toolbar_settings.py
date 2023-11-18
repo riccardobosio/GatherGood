@@ -7,7 +7,7 @@ from config.settings.components import env
 DEBUG: bool = env.bool('DEBUG', default=True)
 
 if DEBUG:
-    from typing import Dict, Tuple, Callable
+    from typing import Callable, Dict, Tuple
 
     from django.http import HttpRequest
 

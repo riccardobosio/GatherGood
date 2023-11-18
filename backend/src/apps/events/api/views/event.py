@@ -2,13 +2,15 @@ from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters, mixins, status
-from rest_framework.exceptions import ValidationError, NotAuthenticated
+from rest_framework.exceptions import NotAuthenticated, ValidationError
 from rest_framework.response import Response
-from apps.accounts.models import User
+
 from apps.accounts.api.views.common import CustomApiView
+from apps.accounts.models import User
 from apps.events.filters import EventFilter
 from apps.events.models import Event
-from apps.events.serializers import EventCreateSerializer, EventDetailSerializer
+from apps.events.serializers import (EventCreateSerializer,
+                                     EventDetailSerializer)
 from apps.events.services import recommend_events
 
 
@@ -118,8 +120,13 @@ class EventDetailRetrieveUpdateDestroyAPI(
         if user and user.id == fetched_event.creator.id:
             return self.partial_update(request, pk)
         else:
-            fetched_event.participants.add(user.id)
-            return Response("You have joined the event.", 200)
+
+            if fetched_event.participants.filter(id=user.id).exists():
+                fetched_event.participants.remove(user)
+                return Response("You removed from the event.", 200)
+            else:
+                fetched_event.participants.add(user.id)
+                return Response("You have joined the event.", 200)
 
     @swagger_auto_schema(
         operation_summary='Delete an event.',
