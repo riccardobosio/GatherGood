@@ -1,10 +1,10 @@
 from django.utils import timezone
+from django.db.models import Case, When
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters, mixins, status
 from rest_framework.exceptions import NotAuthenticated, ValidationError
 from rest_framework.response import Response
-
 from apps.accounts.api.views.common import CustomApiView
 from apps.accounts.models import User
 from apps.events.filters import EventFilter
@@ -45,7 +45,9 @@ class EventsAPI(CustomApiView, mixins.ListModelMixin):
 
         ordered_id_list = recommend_events(joined_events_list, available_events_list)
 
-        return sorted(available_events, key=lambda event: ordered_id_list.index(event.id))
+        preserved_order = Case(*[When(id=id, then=pos) for pos, id in enumerate(ordered_id_list)])
+
+        return available_events.order_by(preserved_order)
 
     @swagger_auto_schema(
         operation_summary='Get list of events.',
