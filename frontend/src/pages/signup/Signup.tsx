@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel, IonIcon, IonGrid, IonRow, IonCol, IonNav, IonTitle } from '@ionic/react';
-import { personOutline } from 'ionicons/icons';
+import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import l from '../../assets/animations/introstrep4.json';
 import Lottie from 'lottie-react';
-
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-}
+import {UserCreate} from "../../api/types";
+import userService from "../../api/services/user";
 
 const SignupForm: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState(
+      { first_name: '', last_name: '', email: '', password: '' }
+  );
   const history = useHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,10 +19,13 @@ const SignupForm: React.FC = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     console.log('Form Data:', formData);
-    // Add your signup logic here
 
-    history.push("/tab1");
+    const user: UserCreate = {...formData, password_confirm: formData.password}
+
+    userService.create(user)
+        .then(() => history.push('/login'))
   };
+
 
   return (
     <IonGrid>
@@ -36,29 +36,38 @@ const SignupForm: React.FC = () => {
             <h2>¡Únete y siéntete mejor!</h2>
             <form onSubmit={handleSubmit}>
               <IonItem>
-                <IonLabel position="floating">Name</IonLabel>
+                <IonLabel position="floating">Nombre</IonLabel>
                 <IonInput
-                  name="name"
-                  value={formData.name}
-                  onIonChange={() => handleChange}
+                  name="first_name"
+                  value={formData.first_name}
+                  onIonChange={handleChange}
                   type="text"
                 />
               </IonItem>
               <IonItem>
-                <IonLabel position="floating">Email</IonLabel>
+                <IonLabel position="floating">Apellido</IonLabel>
+                <IonInput
+                    name="last_name"
+                    value={formData.last_name}
+                    onIonChange={handleChange}
+                    type="text"
+                />
+              </IonItem>
+              <IonItem>
+                <IonLabel position="floating">Correo</IonLabel>
                 <IonInput
                   name="email"
                   value={formData.email}
-                  onIonChange={() => handleChange}
+                  onIonChange={handleChange}
                   type="email"
                 />
               </IonItem>
               <IonItem>
-                <IonLabel position="floating">Password</IonLabel>
+                <IonLabel position="floating">Contraseña</IonLabel>
                 <IonInput
                   name="password"
                   value={formData.password}
-                  onIonChange={() => handleChange}
+                  onIonChange={handleChange}
                   type="password"
                 />
               </IonItem>
