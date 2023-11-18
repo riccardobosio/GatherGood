@@ -1,13 +1,24 @@
 // EventDetails.tsx
 
 import React, {useEffect, useState} from 'react';
-import {IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonContent, IonButton} from '@ionic/react';
+import {
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
+    IonTitle,
+    IonContent,
+    IonButton,
+    IonList, IonItem, IonLabel
+} from '@ionic/react';
 
 import {useHistory, useParams} from "react-router";
 import {Event, User} from "../../api/types"
 import eventService from "../../api/services/event";
 import {useUser} from "../../hooks/useUser";
 import userService from "../../api/services/user";
+import {formatDate} from "../../utils/date";
 
 const EventDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -52,20 +63,42 @@ const EventDetails: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
-                    <>
-                        <p>Event Name: {event.name}</p>
-                        <p>Date: {event.date}</p>
-                        <p>Description: {event.description}</p>
-                        {creator &&
-                            <IonButton onClick={() => goToUserDetail(event.creator)}>
-                                Creator: {creator.first_name} {creator.last_name}
+                    <IonList>
+                        <IonItem>
+                            <IonLabel>
+                                <h2>Description</h2>
+                                <p>{event.description}</p>
+                            </IonLabel>
+                        </IonItem>
+
+                        {creator && (
+                            <IonItem>
+                                <IonLabel>
+                                    <h2>Creator</h2>
+                                    <p>{creator.first_name} {creator.last_name}</p>
+                                </IonLabel>
+
+                                <IonButton fill="clear" size="small" onClick={() => goToUserDetail(event.creator)}>
+                                    See Reviews
+                                </IonButton>
+                            </IonItem>
+                        )}
+
+                        <IonItem>
+                            <IonLabel>
+                                <h2>Date</h2>
+                                <p>{formatDate(event.date)}</p>
+                            </IonLabel>
+                        </IonItem>
+
+                        <IonItem className="ion-text-center" lines="none">
+                            <IonButton expand="full" onClick={joinEvent} disabled={hasJoined}>
+                                {hasJoined ? "You've already joined the event" : 'Join Event'}
                             </IonButton>
-                        }
-                        <IonButton expand="full" onClick={joinEvent} disabled={hasJoined}>
-                            {hasJoined ? "You've already joined the event" : 'Join Event'}
-                        </IonButton>
-                    </>
+                        </IonItem>
+                    </IonList>
                 </IonContent>
+
             </IonPage>
         )}
     </>

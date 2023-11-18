@@ -9,7 +9,7 @@ import {
     IonBackButton,
     IonTitle,
     IonContent,
-    IonList, IonCard, IonCardContent, IonItem, IonIcon, IonLabel
+    IonList, IonCard, IonCardContent, IonIcon, IonLabel
 } from '@ionic/react';
 
 import {useParams} from "react-router";
@@ -39,7 +39,12 @@ const UserDetails: React.FC = () => {
                         <IonTitle>{user.last_name} {user.first_name}'s reviews</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <IonContent>
+                <IonContent className="ion-text-center ion-padding">
+                    {user.reviews.length === 0 &&
+                        <IonLabel>
+                            <p>{user.first_name} does not have any reviews yet</p>
+                        </IonLabel>
+                    }
                     <IonList>
                         {user.reviews.map((review: Review) => (
                             <IonCard key={review.id}>
