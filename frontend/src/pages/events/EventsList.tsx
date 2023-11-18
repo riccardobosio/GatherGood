@@ -69,7 +69,7 @@ const EventsList: React.FC = () => {
                                     <IonRow>
                                         <IonCol className="ion-text-end">
                                             <IonButton onClick={() => viewEventDetails(event)}>
-                                                View Details
+                                                See Event
                                             </IonButton>
                                         </IonCol>
                                     </IonRow>

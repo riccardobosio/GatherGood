@@ -74,7 +74,7 @@ const EventDetails: React.FC = () => {
                         {creator && (
                             <IonItem>
                                 <IonLabel>
-                                    <h2>Creator</h2>
+                                    <h2>Organizer</h2>
                                     <p>{creator.first_name} {creator.last_name}</p>
                                 </IonLabel>
 

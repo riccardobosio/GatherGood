@@ -49,8 +49,12 @@ const UserDetails: React.FC = () => {
                         {user.reviews.map((review: Review) => (
                             <IonCard key={review.id}>
                                 <IonCardContent>
-                                    {[...Array(review.rate)].map((_, index) => (
-                                        <IonIcon key={index} icon={star} color="warning" />
+                                    {[...Array(5)].map((_, index) => (
+                                        <IonIcon
+                                            key={index}
+                                            icon={star}
+                                            color={index < review.rate ? "warning" : "medium"}
+                                        />
                                     ))}
                                     <p><strong>{review.description}</strong></p>
                                     <p>Created at: {formatDate(review.created_at, false)}</p>
