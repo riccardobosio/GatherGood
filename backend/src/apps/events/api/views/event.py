@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters, mixins, status
@@ -20,10 +21,11 @@ class EventsAPI(CustomApiView, mixins.ListModelMixin):
             return EventCreateSerializer
         return EventDetailSerializer
 
-    def get_queryset(self): #TODO: only not expired events
+    def get_queryset(self):
         user: User = self.request.user
+        current_datetime = timezone.now()
         if user.is_authenticated:
-            return Event.objects.all().order_by('date')
+            return Event.objects.filter(date__gte=current_datetime).order_by('date')
 
     @swagger_auto_schema(
         operation_summary='Get list of events.',
