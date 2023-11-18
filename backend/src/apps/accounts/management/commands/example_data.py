@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 
 from apps.accounts.models import User
 from apps.events.models import Event
+from apps.review.models.review import Review
 
 
 class Command(BaseCommand):
@@ -117,6 +118,24 @@ class Command(BaseCommand):
                 creator=riccardo
             )
             self.stdout.write(f'Created available events\n')
+            review_1 = Review.objects.create(
+                reviewer=levon,
+                reviewee=riccardo,
+                rate=4,
+                description="Had fun with him!"
+            )
+            review_2 = Review.objects.create(
+                reviewer=levon,
+                reviewee=riccardo,
+                rate=3,
+                description="He organized the event in a simple way"
+            )
+            review_3 = Review.objects.create(
+                reviewer=laia,
+                reviewee=riccardo,
+                rate=5,
+                description="Helped a lot"
+            )
 
         else:
             self.stdout.write('Database is already populated.\n')
