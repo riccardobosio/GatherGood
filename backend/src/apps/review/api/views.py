@@ -44,7 +44,7 @@ class ReviewCreateAndListApi(CustomApiView):
         serializer = ReviewCreateInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        new_review: Review = create_review(**serializer.data)
+        new_review: Review = create_review(reviewer=request.user, **serializer.data)
         data = ReviewDetailOutputSerializer(new_review).data
         return Response(data=data, status=status.HTTP_201_CREATED)
 
@@ -106,7 +106,7 @@ class ReviewRetrieveAndUpdateApi(CustomApiView):
         serializer = ReviewUpdateInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        fetched_review: Review = get_review(id=review_id)
+        fetched_review: Review = get_review(id=review_id, reviewer=request.user)
         update_model_object(
             model=fetched_review,
             refresh_updated_at=True,

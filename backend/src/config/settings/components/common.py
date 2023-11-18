@@ -95,3 +95,15 @@ DJANGO_SUPERUSER_EMAIL: str = env.str("DJANGO_SUPERUSER_EMAIL")
 DJANGO_SUPERUSER_PASSWORD: str = env.str("DJANGO_SUPERUSER_PASSWORD")
 DJANGO_SUPERUSER_FIRST_NAME: str = env.str("DJANGO_SUPERUSER_FIRST_NAME")
 DJANGO_SUPERUSER_LAST_NAME: str = env.str("DJANGO_SUPERUSER_LAST_NAME")
+
+# ML model
+
+import gensim.downloader as api
+import nltk
+
+# Download and load a pre-trained word embedding model
+RECOMMENDER_MODEL = api.load('glove-wiki-gigaword-100')  # A medium-sized model
+
+# Ensure you have the NLTK stopwords dataset downloaded
+nltk.download('punkt')
+nltk.download('stopwords')
