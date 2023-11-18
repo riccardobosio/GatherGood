@@ -7,7 +7,8 @@ import {
     IonDatetime,
     IonHeader,
     IonInput,
-    IonLabel,
+    IonItem,
+    IonLabel, IonList,
     IonPage,
     IonTextarea,
     IonTitle,
@@ -22,7 +23,7 @@ import {getCurrentDateTime} from "../../utils/date";
 const CreateEventForm: React.FC = () => {
     const [name, setName] = useState<string>('');
     const [location, setLocation] = useState<string>('');
-    const [maxPeople, setMaxPeople] = useState<number>(1);
+    const [maxPeople, setMaxPeople] = useState<number>();
     const [date, setDate] = useState<string>(getCurrentDateTime());
     const [description, setDescription] = useState<string>('');
 
@@ -54,29 +55,60 @@ const CreateEventForm: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
-                <IonLabel>Name</IonLabel>
-                <IonInput value={name} onIonChange={(e) => setName(e.detail.value!)} />
+                <IonList>
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Name</h2>
+                        </IonLabel>
+                        <IonInput placeholder="Enter event name" value={name} onIonChange={(e) => setName(e.detail.value!)} />
+                    </IonItem>
 
-                <IonLabel>Location</IonLabel>
-                <IonInput value={location} onIonChange={(e) => setLocation(e.detail.value!)} />
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Description</h2>
+                        </IonLabel>
+                        <IonInput
+                            placeholder="Enter event description"
+                            value={description}
+                            onIonChange={(e) => setDescription(e.detail.value!)}
+                        />
+                    </IonItem>
 
-                <IonLabel>Max People</IonLabel>
-                <IonInput type="number" value={maxPeople} onIonChange={(e) => setMaxPeople(parseInt(e.detail.value!, 10))} />
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Location</h2>
+                        </IonLabel>
+                        <IonInput placeholder="Enter event location" value={location} onIonChange={(e) => setLocation(e.detail.value!)} />
+                    </IonItem>
 
-                <IonLabel>Date</IonLabel>
-                <IonDatetime
-                    min={getCurrentDateTime()}
-                    max="2030"
-                    value={date}
-                    onIonChange={(e) => setDate(e.detail.value! as string)}
-                />
+                    <IonItem>
+                        <IonLabel>
+                            <h2>Max People</h2>
+                        </IonLabel>
+                        <IonInput
+                            placeholder="Enter max number of people"
+                            type="number"
+                            value={maxPeople}
+                            onIonChange={(e) => setMaxPeople(parseInt(e.detail.value!, 10))}
+                        />
+                    </IonItem>
 
-                <IonLabel>Description</IonLabel>
-                <IonTextarea value={description} onIonChange={(e) => setDescription(e.detail.value!)} />
+                    <IonItem>
+                        <IonDatetime
+                            placeholder="Select event date and time"
+                            min={getCurrentDateTime()}
+                            max="2030"
+                            value={date}
+                            onIonChange={(e) => setDate(e.detail.value! as string)}
+                        />
+                    </IonItem>
 
-                <IonButton expand="full" onClick={handleSubmit}>
-                    Create Event
-                </IonButton>
+                    <IonItem className="ion-text-center" lines="none">
+                        <IonButton expand="full" onClick={handleSubmit} disabled={!name || !description || !location || !maxPeople || !date}>
+                            Create Event
+                        </IonButton>
+                    </IonItem>
+                </IonList>
             </IonContent>
         </IonPage>
     );
