@@ -11,7 +11,6 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import {calendar, person, square} from 'ionicons/icons';
-import Events from './pages/Events';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 
@@ -36,7 +35,9 @@ import './theme/variables.css';
 import Login from "./pages/Login";
 import UserProvider from "./contexts/UserProvider";
 import Profile from "./pages/Profile";
-import EventDetails from "./pages/EventDetail";
+import EventDetails from "./pages/events/EventDetail";
+import EventCreate from "./pages/events/EventCreate";
+import EventsList from "./pages/events/EventsList";
 
 setupIonicReact();
 
@@ -50,10 +51,13 @@ const App: React.FC = () => (
               <Login />
             </Route>
             <Route exact path="/events">
-              <Events />
+              <EventsList />
             </Route>
             <Route exact path="/events/:id">
               <EventDetails />
+            </Route>
+            <Route exact path="/events/create">
+              <EventCreate />
             </Route>
             <Route exact path="/profile">
               <Profile />
