@@ -1,4 +1,4 @@
-giimport multiprocessing
+import multiprocessing
 
 bind = '0.0.0.0:8000'
 preload_app = True
