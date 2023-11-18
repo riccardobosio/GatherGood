@@ -12,15 +12,16 @@ import {
     IonButton,
     IonGrid,
     IonRow,
-    IonCol,
+    IonCol, IonButtons, IonIcon,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
-import { Event } from '../api/types';
-import eventService from '../api/services/event';
-import { formatDate } from '../utils/date';
+import { Event } from '../../api/types';
+import eventService from '../../api/services/event';
+import { formatDate } from '../../utils/date';
 import {useHistory} from "react-router";
+import {addOutline} from "ionicons/icons";
 
-const Events: React.FC = () => {
+const EventsList: React.FC = () => {
     const [events, setEvents] = useState<Event[]>([]);
     const history = useHistory();
 
@@ -32,11 +33,21 @@ const Events: React.FC = () => {
         history.push(`/events/${event.id}`)
     };
 
+    const viewCreateEvent = () => {
+        history.push(`/events/create`)
+    };
+
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Events</IonTitle>
+                    <IonButtons slot="end">
+                        <IonButton color="primary" onClick={viewCreateEvent}>
+                            <IonIcon slot="start" icon={addOutline} />
+                            Create New
+                        </IonButton>
+                    </IonButtons>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -72,4 +83,4 @@ const Events: React.FC = () => {
     );
 };
 
-export default Events;
+export default EventsList;

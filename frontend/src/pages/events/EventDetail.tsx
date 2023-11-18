@@ -4,9 +4,9 @@ import React, {useEffect, useState} from 'react';
 import {IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonContent, IonButton} from '@ionic/react';
 
 import {useParams} from "react-router";
-import {Event, User} from "../api/types"
-import eventService from "../api/services/event";
-import {useUser} from "../hooks/useUser";
+import {Event, User} from "../../api/types"
+import eventService from "../../api/services/event";
+import {useUser} from "../../hooks/useUser";
 
 const EventDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();

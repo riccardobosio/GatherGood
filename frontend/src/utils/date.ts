@@ -20,3 +20,8 @@ export function formatDate(inputDate: string): string {
     // Format the date
     return date.toLocaleDateString('en-US', options);
 }
+
+export function getCurrentDateTime(): string {
+    const currentDate = new Date();
+    return currentDate.toISOString().replace(/\.\d+Z$/, '.000Z');
+}
