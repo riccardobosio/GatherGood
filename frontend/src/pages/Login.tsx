@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import authenticationService from '../api/services/authentication';
 import '../styles.css';
 import SignupForm from "../components/Signup";
+import {useUser} from "../hooks/useUser";
 
 interface FormData {
     email: string;
@@ -14,16 +15,15 @@ const Form: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
     const [showSignupForm, setShowSignupForm] = useState(false);
     const history = useHistory();
+    const { login } = useUser();
 
-    // @ts-ignore
-    const handleChange = (e) => {
-        const { name, value } = e.detail;
-        setFormData({ ...formData, [name]: value });
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        authenticationService.login(formData.email, formData.password).then(() => history.push('/profile'));
+        login(formData.email, formData.password).then(() => history.push('/home'));
     };
 
     return (
