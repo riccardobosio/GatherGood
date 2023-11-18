@@ -41,11 +41,11 @@ const EventsList: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Events</IonTitle>
+                    <IonTitle>Eventos</IonTitle>
                     <IonButtons slot="end">
                         <IonButton color="primary" onClick={viewCreateEvent}>
                             <IonIcon slot="start" icon={addOutline} />
-                            Create New
+                            Crear Nuevo
                         </IonButton>
                     </IonButtons>
                 </IonToolbar>
@@ -53,7 +53,7 @@ const EventsList: React.FC = () => {
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Events</IonTitle>
+                        <IonTitle size="large">Eventos</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <>
@@ -69,7 +69,7 @@ const EventsList: React.FC = () => {
                                     <IonRow>
                                         <IonCol className="ion-text-end">
                                             <IonButton onClick={() => viewEventDetails(event)}>
-                                                See Event
+                                                Ver Evento
                                             </IonButton>
                                         </IonCol>
                                     </IonRow>

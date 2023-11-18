@@ -36,13 +36,13 @@ const UserDetails: React.FC = () => {
                         <IonButtons slot="start">
                             <IonBackButton defaultHref="/events" />
                         </IonButtons>
-                        <IonTitle>{user.last_name} {user.first_name}'s reviews</IonTitle>
+                        <IonTitle>Reseñas de {user.first_name} {user.last_name}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-text-center ion-padding">
                     {user.reviews.length === 0 &&
                         <IonLabel>
-                            <p>{user.first_name} does not have any reviews yet</p>
+                            <p>{user.first_name} aún no tiene ninguna reseña</p>
                         </IonLabel>
                     }
                     <IonList>
@@ -57,7 +57,7 @@ const UserDetails: React.FC = () => {
                                         />
                                     ))}
                                     <p><strong>{review.description}</strong></p>
-                                    <p>Created at: {formatDate(review.created_at, false)}</p>
+                                    <p>Fecha de creación: {formatDate(review.created_at, false)}</p>
                                 </IonCardContent>
                             </IonCard>
                         ))}

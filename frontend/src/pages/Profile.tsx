@@ -44,7 +44,7 @@ const UserProfilePage: React.FC = () => {
                     <IonButtons slot="start">
                         <IonBackButton defaultHref="/events" />
                     </IonButtons>
-                    <IonTitle>Profile</IonTitle>
+                    <IonTitle>Perfil</IonTitle>
                     <IonButtons slot="end">
                         <IonButton
                             onClick={() => {
@@ -64,7 +64,7 @@ const UserProfilePage: React.FC = () => {
                 <IonList>
                     <IonItem>
                         <IonLabel>
-                            <h2>Email</h2>
+                            <h2>Correo</h2>
                             <p>
                                 <IonInput value={editedUser?.email} />
                             </p>
@@ -72,7 +72,7 @@ const UserProfilePage: React.FC = () => {
                     </IonItem>
                     <IonItem>
                         <IonLabel>
-                            <h2>First name</h2>
+                            <h2>Nombre</h2>
                             <p>
                                 <IonInput
                                     value={editedUser?.first_name}
@@ -83,7 +83,7 @@ const UserProfilePage: React.FC = () => {
                     </IonItem>
                     <IonItem>
                         <IonLabel>
-                            <h2>Last name</h2>
+                            <h2>Apellido</h2>
                             <p>
                                 <IonInput
                                     value={editedUser?.last_name}
@@ -94,7 +94,7 @@ const UserProfilePage: React.FC = () => {
                     </IonItem>
                     <IonItem className="ion-text-center" lines="none">
                         <IonButton expand="full" onClick={handleSave}>
-                            Save Changes
+                            Guardar Cambios
                         </IonButton>
                     </IonItem>
 
