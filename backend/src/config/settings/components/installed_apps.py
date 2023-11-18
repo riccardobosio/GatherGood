@@ -31,6 +31,7 @@ DEBUG_APPS: Tuple[str, ...] = (
 
 PROJECT_APPS: Tuple[str, ...] = (
     'apps.accounts',
+    'apps.review'
 )
 
 INSTALLED_APPS: Tuple[str, ...] = DJANGO_APPS + SIDE_APPS + PROJECT_APPS
