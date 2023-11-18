@@ -29,9 +29,9 @@
         "model": "accounts.user",
         "pk": "0762ca79-661b-48c6-a065-ed83245f65f4",
         "fields": {
-            "email": "david.levon@example.com",
+            "email": "david.williams1@example.com",
             "first_name": "David",
-            "last_name": "Levonex",
+            "last_name": "Williams",
             "is_superuser": false,
             "is_staff": false,
             "created_at": "2023-11-18T14:30:21.418799",
@@ -185,9 +185,9 @@
         "model": "accounts.user",
         "pk": "0ad600ad-4e2d-49b0-9c75-20ed11db2a50",
         "fields": {
-            "email": "laura.rodriguez@example.com",
+            "email": "laura.hui@example.com",
             "first_name": "Laura",
-            "last_name": "Rodriguez",
+            "last_name": "Hui",
             "is_superuser": false,
             "is_staff": false,
             "created_at": "2023-11-18T14:30:21.418799",
@@ -198,7 +198,7 @@
         "model": "accounts.user",
         "pk": "e4dd97fd-586a-44bc-9bb7-4984b0ef5183",
         "fields": {
-            "email": "david.williams@example.com",
+            "email": "david.williams2@example.com",
             "first_name": "David",
             "last_name": "Williams",
             "is_superuser": false,
@@ -268,7 +268,7 @@
             "location": "Murcia",
             "max_people": 10,
             "date": "2023-10-22T14:23:58.532332",
-            "description": "Be part of the vibrant community at Gathering on Cooking, where we celebrate creativity and collaboration.",
+            "description": "Join us for EventName0, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -289,7 +289,7 @@
             "location": "Gijon",
             "max_people": 16,
             "date": "2023-01-24T14:23:58.532419",
-            "description": "Immerse yourself in the dynamic atmosphere of Exhibition on Fashion, showcasing the best in talent and innovation.",
+            "description": "Join us for EventName1, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -310,7 +310,7 @@
             "location": "Cordoba",
             "max_people": 75,
             "date": "2022-11-25T14:23:58.532506",
-            "description": "Connect and grow with like-minded individuals at Seminar on Sports, an event dedicated to enriching experiences.",
+            "description": "Join us for EventName2, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -331,7 +331,7 @@
             "location": "Vigo",
             "max_people": 46,
             "date": "2023-10-17T14:23:58.532585",
-            "description": "Discover the joy of learning and sharing at Gathering on Music, a perfect blend of fun and knowledge.",
+            "description": "Join us for EventName3, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -352,7 +352,7 @@
             "location": "Alicante",
             "max_people": 60,
             "date": "2023-10-06T14:23:58.532660",
-            "description": "Be part of the vibrant community at Tour on Literature, where we celebrate creativity and collaboration.",
+            "description": "Join us for EventName4, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -373,7 +373,7 @@
             "location": "Alicante",
             "max_people": 61,
             "date": "2023-05-06T14:23:58.532701",
-            "description": "Immerse yourself in the dynamic atmosphere of Exhibition on Photography, showcasing the best in talent and innovation.",
+            "description": "Join us for EventName5, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -394,7 +394,7 @@
             "location": "Seville",
             "max_people": 47,
             "date": "2022-12-09T14:23:58.535373",
-            "description": "Be part of the vibrant community at Concert on Photography, where we celebrate creativity and collaboration.",
+            "description": "Join us for EventName6, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -415,7 +415,7 @@
             "location": "Vigo",
             "max_people": 16,
             "date": "2022-12-31T14:23:58.535581",
-            "description": "Experience the excitement at Gathering on Literature, where we bring together enthusiasts and experts for an unforgettable day.",
+            "description": "Join us for EventName7, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -436,7 +436,7 @@
             "location": "Gijon",
             "max_people": 69,
             "date": "2023-08-12T14:23:58.535722",
-            "description": "Immerse yourself in the dynamic atmosphere of Tour on Art, showcasing the best in talent and innovation.",
+            "description": "Join us for EventName8, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -457,7 +457,7 @@
             "location": "Bilbao",
             "max_people": 6,
             "date": "2022-12-15T14:23:58.538195",
-            "description": "Connect and grow with like-minded individuals at Marathon on Art, an event dedicated to enriching experiences.",
+            "description": "Join us for EventName9, a community gathering focusing on fun activities and social interaction. Expect an engaging and memorable experience!",
             "participants": [
                 "240a9392-56f9-46d5-b619-244ef14cfe10",
                 "3cbac43b-4c7e-411d-b1f8-0a3da01f7898",
@@ -587,106 +587,6 @@
             "description": "This review is for the organizer of the event. They were attentive, organized, and created a great atmosphere for all attendees.",
             "created_at": "2023-11-18T14:30:21.418799",
             "updated_at": "2023-11-18T14:30:21.418799"
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 11,
-        "fields": {
-            "name": "Exhibition on Fashion",
-            "location": "Elche",
-            "start_date": "2023-11-29",
-            "description": "Immerse yourself in the dynamic atmosphere of EventName11, showcasing the best in talent and innovation."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 12,
-        "fields": {
-            "name": "Festival on Music",
-            "location": "Madrid",
-            "start_date": "2023-11-30",
-            "description": "Experience the excitement at EventName12, where we bring together enthusiasts and experts for an unforgettable day."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 13,
-        "fields": {
-            "name": "Gathering on Technology",
-            "location": "Barcelona",
-            "start_date": "2023-12-01",
-            "description": "Be part of the vibrant community at EventName13, where we celebrate creativity and collaboration."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 14,
-        "fields": {
-            "name": "Festival on History",
-            "location": "Gijon",
-            "start_date": "2023-12-02",
-            "description": "Be part of the vibrant community at EventName14, where we celebrate creativity and collaboration."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 15,
-        "fields": {
-            "name": "Workshop on Technology",
-            "location": "Murcia",
-            "start_date": "2023-12-03",
-            "description": "Connect and grow with like-minded individuals at EventName15, an event dedicated to enriching experiences."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 16,
-        "fields": {
-            "name": "Marathon on Literature",
-            "location": "Elche",
-            "start_date": "2023-12-04",
-            "description": "Be part of the vibrant community at EventName16, where we celebrate creativity and collaboration."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 17,
-        "fields": {
-            "name": "Marathon on Photography",
-            "location": "Palma",
-            "start_date": "2023-12-05",
-            "description": "Be part of the vibrant community at EventName17, where we celebrate creativity and collaboration."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 18,
-        "fields": {
-            "name": "Gathering on Photography",
-            "location": "Palma",
-            "start_date": "2023-12-06",
-            "description": "Connect and grow with like-minded individuals at EventName18, an event dedicated to enriching experiences."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 19,
-        "fields": {
-            "name": "Workshop on Art",
-            "location": "Barcelona",
-            "start_date": "2023-12-07",
-            "description": "Be part of the vibrant community at EventName19, where we celebrate creativity and collaboration."
-        }
-    },
-    {
-        "model": "events.event",
-        "pk": 20,
-        "fields": {
-            "name": "Meetup on Sports",
-            "location": "Eixample",
-            "start_date": "2023-12-08",
-            "description": "Connect and grow with like-minded individuals at EventName20, an event dedicated to enriching experiences."
         }
     }
 ]
