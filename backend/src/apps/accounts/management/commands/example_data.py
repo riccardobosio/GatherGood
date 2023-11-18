@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+
 from apps.accounts.models import User
 from apps.events.models import Event
 

@@ -1,7 +1,7 @@
 from typing import List
 
-from rest_framework import permissions
 from django.contrib.auth.models import Permission
+from rest_framework import permissions
 
 from apps.accounts.models import User
 

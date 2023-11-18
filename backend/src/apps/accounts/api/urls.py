@@ -1,6 +1,7 @@
 from django.urls import path
 
-from apps.accounts.api.views.user import ProfileRetrieveUpdateDeleteAPI, UserDetailAPI, RegistrationApi
+from apps.accounts.api.views.user import (ProfileRetrieveUpdateDeleteAPI,
+                                          RegistrationApi, UserDetailAPI)
 
 urlpatterns = [
     path(

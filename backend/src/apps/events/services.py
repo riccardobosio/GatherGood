@@ -1,8 +1,8 @@
-from sklearn.metrics.pairwise import cosine_similarity
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 import numpy as np
 from django.conf import settings
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 def preprocess_text(text):

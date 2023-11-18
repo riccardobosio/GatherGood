@@ -1,15 +1,18 @@
+from dj_rest_auth.jwt_auth import unset_jwt_cookies
+from django.shortcuts import get_object_or_404
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, status
-from dj_rest_auth.jwt_auth import unset_jwt_cookies
-from rest_framework.response import Response
-from apps.accounts.api.views.common import CustomApiView
-from apps.accounts.models import User
-from apps.accounts.exceptions import PasswordNotValidError
-from django.shortcuts import get_object_or_404
-from apps.accounts.serializers import ProfileDeleteInputSerializer, UserDetailSerializer, UserReviewDetailSerializer, \
-    RegistrationInputSerializer
-from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import ValidationError
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+
+from apps.accounts.api.views.common import CustomApiView
+from apps.accounts.exceptions import PasswordNotValidError
+from apps.accounts.models import User
+from apps.accounts.serializers import (ProfileDeleteInputSerializer,
+                                       RegistrationInputSerializer,
+                                       UserDetailSerializer,
+                                       UserReviewDetailSerializer)
 
 
 class ProfileRetrieveUpdateDeleteAPI(

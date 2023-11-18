@@ -1,11 +1,10 @@
 from typing import Optional
 
 import django_filters
-
-from apps.review.models import Review
-
 from rest_framework.exceptions import NotFound
+
 from apps.accounts.models import User
+from apps.review.models import Review
 
 
 def get_review(

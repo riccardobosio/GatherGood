@@ -1,6 +1,7 @@
 from django.urls import path
 
-from apps.review.api.views import ReviewCreateAndListApi, ReviewRetrieveAndUpdateApi
+from apps.review.api.views import (ReviewCreateAndListApi,
+                                   ReviewRetrieveAndUpdateApi)
 
 urlpatterns = [
     path('', ReviewCreateAndListApi.as_view(), name='create-get-vps'),

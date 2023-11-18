@@ -1,8 +1,10 @@
 from datetime import timedelta
+
 from django.utils import timezone
 from rest_framework import serializers
-from apps.events.models import Event
+
 from apps.accounts.models import User
+from apps.events.models import Event
 
 
 class ParticipantsSerializer(serializers.ModelSerializer):
