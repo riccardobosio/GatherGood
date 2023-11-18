@@ -28,6 +28,7 @@ api_authentication = [
 api_urlpatterns = [
     path('', include('apps.accounts.api.urls'), name='user_api'),
     path('auth/', include(api_authentication)),
+    path('reviews/', include('apps.review.api.urls'), name='review_api'),
 ]
 
 urlpatterns = [
