@@ -1,6 +1,5 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
-  IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
@@ -10,11 +9,8 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { calendar, person, square } from 'ionicons/icons';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { calendar, person} from 'ionicons/icons';
 import Signup from './pages/signup/Signup';
-import StepsContainer from './pages/intro/StepProgress';
 import Intro from './pages/intro/Intro';
 
 /* Core CSS required for Ionic components to work properly */
@@ -47,64 +43,56 @@ import UserDetails from './pages/users/UserDetail';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonReactRouter>
-    <UserProvider>
-      <IonTabs>
+    <IonReactRouter>
+      <UserProvider>
         <IonRouterOutlet>
+
+          <Route exact path="/">
+            <Intro />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/events">
-            <EventsList />
+          <Route exact path="/steps">
+            <StepProgress />
           </Route>
-          <Route exact path="/events/:id">
-            <EventDetails />
+          <Route exact path="/signup">
+            <Signup />
           </Route>
-          <Route exact path="/events/create">
-            <EventCreate />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/users/:id">
-            <UserDetails />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
+
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route exact path="/events">
+                <EventsList />
+              </Route>
+              <Route exact path="/events/:id">
+                <EventDetails />
+              </Route>
+              <Route exact path="/events/create">
+                <EventCreate />
+              </Route>
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+              <Route exact path="/users/:id">
+                <UserDetails />
+              </Route>
+            </IonRouterOutlet>
+
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="Events" href="/events">
+                <IonIcon aria-hidden="true" icon={calendar} />
+                <IonLabel>Events</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="Profile" href="/profile">
+                <IonIcon aria-hidden="true" icon={person} />
+                <IonLabel>Profile</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="Events" href="/events">
-            <IonIcon aria-hidden="true" icon={calendar} />
-            <IonLabel>Events</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="Profile" href="/profile">
-            <IonIcon aria-hidden="true" icon={person} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-      <Route exact path="/signup">
-        <Signup />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-      <Route exact path="/steps">
-        <StepProgress />
-      </Route>
-      <Route exact path="/">
-        <Intro />
-      </Route>
-    </UserProvider>
-  </IonReactRouter>
+      </UserProvider>
+    </IonReactRouter>
 );
 
 export default App;
