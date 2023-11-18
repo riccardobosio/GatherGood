@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+* {
+  font-family: 'Russo One', sans-serif;
+}
+
+.fancy-text {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2.5em; /* Large text size */
+  color: rgb(40, 39, 39); /* Example color */
+  font-weight: bold;
+  margin-bottom: 20px; /* Spacing between text and animation */
+  /* Add more styling as needed */
+}
+
+.custom-button {
+  border-radius: 20px; /* Rounded edges */
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 5px 20px; /* Smaller footprint */
+  transition: 0.3s; /* Smooth transition for press effect */
+}
+
+.custom-button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Pressed state shadow */
+  transform: translateY(2px); /* Pressed state movement */
+}
+
+ion-button.signup-btn {
+  --background: rgb(174,108,194	);
+  color: rgb(0, 0, 0);
+  --border-color: black;
+  --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+ion-button.login-btn {
+  --border-color: black;
+  --color: black;
+  --outline: red;
+}
+
+/* YourStyleSheet.css */
+.ion-justify-content-center {
+  justify-content: center;
+}
+
+.ion-align-items-center {
+  align-items: center;
+}
+
+/* Ensures full height so vertical centering works as expected */
+ion-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.test{
+  border: 2px solid black;
+}
