@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {calendar, ellipse, square, triangle} from 'ionicons/icons';
+import {calendar, ellipse, person, square, triangle} from 'ionicons/icons';
 import Events from './pages/Events';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -49,11 +49,11 @@ const App: React.FC = () => (
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
             <Route exact path="/events">
               <Events />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
             </Route>
             <Route exact path="/tab2">
               <Tab2 />
@@ -70,9 +70,9 @@ const App: React.FC = () => (
               <IonIcon aria-hidden="true" icon={calendar} />
               <IonLabel>Events</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon aria-hidden="true" icon={ellipse} />
-              <IonLabel>Tab 2</IonLabel>
+            <IonTabButton tab="Profile" href="/profile">
+              <IonIcon aria-hidden="true" icon={person} />
+              <IonLabel>Profile</IonLabel>
             </IonTabButton>
             <IonTabButton tab="tab3" href="/tab3">
               <IonIcon aria-hidden="true" icon={square} />
