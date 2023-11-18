@@ -66,7 +66,7 @@ const EventDetails: React.FC = () => {
                     <IonList>
                         <IonItem>
                             <IonLabel>
-                                <h2>Description</h2>
+                                <h2>Descripción</h2>
                                 <p>{event.description}</p>
                             </IonLabel>
                         </IonItem>
@@ -74,26 +74,26 @@ const EventDetails: React.FC = () => {
                         {creator && (
                             <IonItem>
                                 <IonLabel>
-                                    <h2>Organizer</h2>
+                                    <h2>Organizador</h2>
                                     <p>{creator.first_name} {creator.last_name}</p>
                                 </IonLabel>
 
                                 <IonButton fill="clear" size="small" onClick={() => goToUserDetail(event.creator)}>
-                                    See Reviews
+                                    Ver reseñas
                                 </IonButton>
                             </IonItem>
                         )}
 
                         <IonItem>
                             <IonLabel>
-                                <h2>Date</h2>
+                                <h2>Fecha</h2>
                                 <p>{formatDate(event.date)}</p>
                             </IonLabel>
                         </IonItem>
 
                         <IonItem className="ion-text-center" lines="none">
                             <IonButton expand="full" onClick={joinEvent} disabled={hasJoined}>
-                                {hasJoined ? "You've already joined the event" : 'Join Event'}
+                                {hasJoined ? "Ya formas parte del evento" : 'Unir-se a evento'}
                             </IonButton>
                         </IonItem>
                     </IonList>
