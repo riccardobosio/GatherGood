@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel } from '@ionic/react';
 import { useHistory } from 'react-router';
-import authenticationService from '../api/services/authentication';
 import '../styles.css';
 import SignupForm from "../components/Signup";
 import {useUser} from "../hooks/useUser";
@@ -23,7 +22,7 @@ const Form: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        login(formData.email, formData.password).then(() => history.push('/home'));
+        login(formData.email, formData.password).then(() => history.push('/events'));
     };
 
     return (
