@@ -13,8 +13,6 @@ export function formatDate(inputDate: string, includeTime: boolean = true): stri
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
-        second: 'numeric',
-        timeZoneName: 'short'
     };
 
     // Format the date
