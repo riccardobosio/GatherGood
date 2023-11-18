@@ -10,7 +10,7 @@ urlpatterns = [
         name="profile"
     ),
     path(
-        'users/<str:review_id>/',
+        'users/<str:user_id>/',
         UserDetailAPI.as_view(),
         name="user_detail"
     ),
