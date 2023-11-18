@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel } from '@ionic/react';
+import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel, IonApp, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router';
-import '../styles.css';
 import SignupForm from "../components/Signup";
-import {useUser} from "../hooks/useUser";
+import { useUser } from "../hooks/useUser";
+import './intro/IndexIntro.css';
+import l from '../assets/animations/login-intro2.json';
+import Lottie from 'lottie-react';
 
 interface FormData {
     email: string;
@@ -26,42 +28,44 @@ const Form: React.FC = () => {
     };
 
     return (
-        <IonPage>
-            <IonContent className="ion-padding center-content">
-                <div className="form-container">
-                    <h2>Login</h2>
-                    <form onSubmit={handleSubmit}>
-                        <IonItem>
-                            <IonLabel position="floating">Email</IonLabel>
-                            <IonInput
-                                name="email"
-                                value={formData.email}
-                                onIonChange={handleChange}
-                                type="email"
-                                required
-                            />
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel position="floating">Password</IonLabel>
-                            <IonInput
-                                name="password"
-                                value={formData.password}
-                                onIonChange={handleChange}
-                                type="password"
-                                required
-                            />
-                        </IonItem>
-                        <IonButton expand="block" type="submit">
-                            Submit
-                        </IonButton>
-                    </form>
-                    <IonButton fill="clear" onClick={() => setShowSignupForm(true)}>
-                        Don't have an account? Sign Up now!
-                    </IonButton>
-                </div>
-                {showSignupForm && <SignupForm />}
+        <IonGrid>
+            <IonContent className='centered-content'>
+                <IonRow className='centered-content'>
+                    <IonCol size-xs="12" size-sm="10" size-md="6" size-lg="4">
+                        <div className="form-container">
+                        <Lottie style={{ width: '100%', height: '200px'}} loop={true} animationData={l} />
+                            <h2>Nos alegra verte de nuevo!</h2>
+                            <form className='login-form' onSubmit={handleSubmit}>
+                                <IonItem>
+                                    <IonLabel position="floating">Email</IonLabel>
+                                    <IonInput
+                                        name="email"
+                                        value={formData.email}
+                                        onIonChange={handleChange}
+                                        type="email"
+                                        required
+                                    />
+                                </IonItem>
+                                <IonItem>
+                                    <IonLabel position="floating">Password</IonLabel>
+                                    <IonInput
+                                        name="password"
+                                        value={formData.password}
+                                        onIonChange={handleChange}
+                                        type="password"
+                                        required
+                                    />
+                                </IonItem>
+                                <IonButton shape='round' fill='outline' className="custom-button login-btn-1 ion-margin-top ion-padding-vertical" type="submit">
+                                    A Disfrutar!
+                                </IonButton>
+                            </form>
+                        </div>
+                        {showSignupForm && <SignupForm />}
+                    </IonCol>
+                </IonRow>
             </IonContent>
-        </IonPage>
+        </IonGrid>
     );
 };
 
