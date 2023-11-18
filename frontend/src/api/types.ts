@@ -34,3 +34,14 @@ export interface User {
     last_name: string;
     is_superuser: boolean;
 }
+
+export interface Event {
+    id: string;
+    name: string;
+    creator: string;
+    location: string;
+    max_people: number;
+    date: string;
+    description: string;
+    participants: string[];
+}
