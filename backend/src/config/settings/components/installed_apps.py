@@ -31,6 +31,7 @@ DEBUG_APPS: Tuple[str, ...] = (
 
 PROJECT_APPS: Tuple[str, ...] = (
     'apps.accounts',
+    'apps.events',
     'apps.review'
 )
 
