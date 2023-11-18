@@ -36,6 +36,14 @@ export interface User {
     reviews: Review[];
 }
 
+export interface UserCreate {
+    email: string;
+    first_name: string;
+    last_name: string;
+    password: string;
+    password_confirm: string;
+}
+
 export interface Event {
     id: string;
     name: string;
