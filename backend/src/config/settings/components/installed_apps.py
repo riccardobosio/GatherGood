@@ -8,7 +8,8 @@ from config.settings.components import env
 DEBUG: bool = env.bool('DEBUG', default=True)
 
 DJANGO_APPS: Tuple[str, ...] = (
-    'django.contrib.admin',
+    'material',
+    'material.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
