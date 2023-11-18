@@ -38,6 +38,7 @@ import Profile from "./pages/Profile";
 import EventDetails from "./pages/events/EventDetail";
 import EventCreate from "./pages/events/EventCreate";
 import EventsList from "./pages/events/EventsList";
+import UserDetails from "./pages/users/UserDetail";
 
 setupIonicReact();
 
@@ -61,6 +62,9 @@ const App: React.FC = () => (
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/users/:id">
+              <UserDetails />
             </Route>
             <Route exact path="/tab2">
               <Tab2 />
