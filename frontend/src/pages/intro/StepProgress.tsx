@@ -70,7 +70,7 @@ const StepProgress: React.FC = () => {
             <div>
               {elementsArray[currentStep]}
             </div>
-            <IonButton onClick={stepController.nextStep} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Segueix!</IonButton>
+            <IonButton onClick={stepController.nextStep} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Continuar!</IonButton>
           </IonCol>
         </IonRow>
       </IonContent>
@@ -83,7 +83,7 @@ const Step1: React.FC = () => {
   return (
     <>
       <Lottie loop autoPlay style={{ width: '100%', height: '300px' }} animationData={is1} />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptate saepe ex aut fugit aspernatur cumque tenetur eligendi minima consequuntur atque modi asperiores omnis quidem libero eos, aliquam unde. Esse?</p>
+      <p>Bienvenido a GatherGood! Crea tu cuenta y únete a nuestra comunidad de voluntarios. Regístrate fácilmente para empezar a ayudar y obtener ayuda.</p>
     </>
   );
 };
@@ -92,7 +92,7 @@ const Step2: React.FC = () => {
   return (
     <>
       <Lottie loop autoPlay style={{ width: '100%', height: '300px' }} animationData={is2} />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptate saepe ex aut fugit aspernatur cumque tenetur eligendi minima consequuntur atque modi asperiores omnis quidem libero eos, aliquam unde. Esse?</p>
+      <p>Crea un evento de voluntariado y conecta con personas que comparten tu espíritu solidario. ¡Juntos podemos hacer la diferencia!</p>
     </>
   );
 };
@@ -101,7 +101,7 @@ const Step3: React.FC = () => {
   return (
     <>
       <Lottie loop autoPlay style={{ width: '100%', height: '300px' }} animationData={is3} />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptate saepe ex aut fugit aspernatur cumque tenetur eligendi minima consequuntur atque modi asperiores omnis quidem libero eos, aliquam unde. Esse?</p>
+      <p>Únete a eventos de voluntariado cerca de ti. Colabora, conoce nuevos amigos y disfruta la satisfacción de ayudar a otros.</p>
     </>
   );
 };
@@ -110,7 +110,7 @@ const Step4: React.FC = () => {
   return (
     <>
       <Lottie loop autoPlay style={{ width: '100%', height: '300px' }} animationData={is4} />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptate saepe ex aut fugit aspernatur cumque tenetur eligendi minima consequuntur atque modi asperiores omnis quidem libero eos, aliquam unde. Esse?</p>
+      <p>Tu opinión cuenta. Deja reseñas y comentarios sobre tu experiencia para ayudar a mejorar nuestra comunidad de voluntarios.</p>
     </>
   );;
 }

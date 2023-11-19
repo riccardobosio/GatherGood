@@ -54,8 +54,8 @@ const UserProfilePage: React.FC = () => {
                                         window.location.reload();
                                     })
                             }}
-                            color="primary">
-                            Logout
+                            color="danger">
+                            Cerrar Sesión
                         </IonButton>
                     </IonButtons>
                 </IonToolbar>

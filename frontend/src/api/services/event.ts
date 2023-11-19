@@ -2,15 +2,12 @@ import AbstractService from "./abstract";
 import {AxiosResponse} from "axios";
 import {api} from "../axios";
 import {Event} from "../types"
+import {getCurrentISO8601DateTime} from "../../utils/date";
 
 class EventService extends AbstractService<Event> {
 
-    async getCreatedEvents() {
-        const response: AxiosResponse<Event[]> = await api.get(`${this.endpoint}/created/`);
-        return response.data;
-    }
-
-    async getJoinedEvents() {
+    async getPassedJoinedEvents() {
+        const params = {before: getCurrentISO8601DateTime()}
         const response: AxiosResponse<Event[]> = await api.get(`${this.endpoint}/joined/`);
         return response.data;
     }
