@@ -31,3 +31,8 @@ export function getCurrentDateTime(): string {
     const currentDate = new Date();
     return currentDate.toISOString().replace(/\.\d+Z$/, '.000Z');
 }
+
+export function getCurrentISO8601DateTime(): string {
+    const currentDate = new Date();
+    return currentDate.toISOString().slice(0, 19).replace('T', ' ');
+}

@@ -12,21 +12,23 @@ import {
     IonButton,
     IonGrid,
     IonRow,
-    IonCol, IonButtons, IonIcon,
+    IonCol, IonButtons,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { Event } from '../../api/types';
 import eventService from '../../api/services/event';
 import { formatDate } from '../../utils/date';
 import {useHistory} from "react-router";
-import {addOutline} from "ionicons/icons";
 
 const EventsList: React.FC = () => {
-    const [events, setEvents] = useState<Event[]>([]);
+    const [seeUpcoming, setSeeUpcoming] = useState(true)
+    const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+    const [pastEvents, setPastEvents] = useState<Event[]>([]);
     const history = useHistory();
 
     useEffect(() => {
-        eventService.getList().then((events) => setEvents(events));
+        eventService.getList().then((events) => setUpcomingEvents(events));
+        eventService.getPassedJoinedEvents().then((events) => setPastEvents(events));
     }, []);
 
     const viewEventDetails = (event: Event) => {
@@ -37,15 +39,33 @@ const EventsList: React.FC = () => {
         history.push(`/events/create`)
     };
 
+    const getFontWeight = (bold: boolean) => {
+        if (bold) return 'bold'
+        return 'normal'
+    }
+
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Events</IonTitle>
+                    <IonTitle>Eventos</IonTitle>
+                    <IonButtons slot="end">
+                        <IonButton
+                            onClick={() => setSeeUpcoming(true)}
+                            style={{ fontWeight: getFontWeight(seeUpcoming) }}
+                        >
+                            Próximos
+                        </IonButton>
+                        <IonButton
+                            onClick={() => setSeeUpcoming(false)}
+                            style={{ fontWeight: getFontWeight(!seeUpcoming) }}
+                        >
+                            Pasados
+                        </IonButton>
+                    </IonButtons>
                     <IonButtons slot="end">
                         <IonButton color="primary" onClick={viewCreateEvent}>
-                            <IonIcon slot="start" icon={addOutline} />
-                            Create New
+                            Crear Nuevo
                         </IonButton>
                     </IonButtons>
                 </IonToolbar>
@@ -53,15 +73,38 @@ const EventsList: React.FC = () => {
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Events</IonTitle>
+                        <IonTitle size="large">Eventos</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <>
-                    {events.map((event) => (
+                {/* Copied this cause got no time */}
+                {seeUpcoming &&
+                    upcomingEvents.map((event) => (
+                            <IonCard key={event.id}>
+                                <IonCardHeader>
+                                    <IonCardTitle>{event.name}</IonCardTitle>
+                                    <IonCardSubtitle>{event.location}, {formatDate(event.date)}</IonCardSubtitle>
+                                </IonCardHeader>
+                                <IonCardContent>
+                                    <p>{event.description}</p>
+                                    <IonGrid>
+                                        <IonRow>
+                                            <IonCol className="ion-text-end">
+                                                <IonButton onClick={() => viewEventDetails(event)}>
+                                                    Ver Evento
+                                                </IonButton>
+                                            </IonCol>
+                                        </IonRow>
+                                    </IonGrid>
+                                </IonCardContent>
+                            </IonCard>
+                    ))
+                }
+                {!seeUpcoming &&
+                    pastEvents.map((event) => (
                         <IonCard key={event.id}>
                             <IonCardHeader>
                                 <IonCardTitle>{event.name}</IonCardTitle>
-                                <IonCardSubtitle>{formatDate(event.date)}</IonCardSubtitle>
+                                <IonCardSubtitle>{event.location}, {formatDate(event.date)}</IonCardSubtitle>
                             </IonCardHeader>
                             <IonCardContent>
                                 <p>{event.description}</p>
@@ -69,15 +112,15 @@ const EventsList: React.FC = () => {
                                     <IonRow>
                                         <IonCol className="ion-text-end">
                                             <IonButton onClick={() => viewEventDetails(event)}>
-                                                See Event
+                                                Ver Evento
                                             </IonButton>
                                         </IonCol>
                                     </IonRow>
                                 </IonGrid>
                             </IonCardContent>
                         </IonCard>
-                    ))}
-                </>
+                    ))
+                }
             </IonContent>
         </IonPage>
     );
