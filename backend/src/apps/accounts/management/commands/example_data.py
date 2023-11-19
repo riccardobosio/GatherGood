@@ -13,7 +13,7 @@ class Command(BaseCommand):
             riccardo = User.objects.create(
                 email='riccardo@email.com',
                 first_name='Riccardo',
-                last_name='B',
+                last_name='Arystan',
             )
             riccardo.set_password('default')
             riccardo.save()
@@ -22,7 +22,7 @@ class Command(BaseCommand):
             arystan = User.objects.create(
                 email='arystan@email.com',
                 first_name='Arystan',
-                last_name='I',
+                last_name='Gaurav',
             )
             arystan.set_password('default')
             arystan.save()
@@ -31,7 +31,7 @@ class Command(BaseCommand):
             laia = User.objects.create(
                 email='laia@email.com',
                 first_name='Laia',
-                last_name='V',
+                last_name='Gaurav',
             )
             laia.set_password('default')
             laia.save()
@@ -43,7 +43,7 @@ class Command(BaseCommand):
             levon = User.objects.create(
                 email='levon@email.com',
                 first_name='Levon',
-                last_name='L',
+                last_name='Arystan',
             )
             levon.set_password('default')
             levon.save()
