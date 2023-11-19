@@ -47,7 +47,7 @@ const UserDetails: React.FC = () => {
                     }
                     <IonList>
                         {user.reviews.map((review: Review) => (
-                            <IonCard key={review.id}>
+                            <IonCard className='card-settings' key={review.id}>
                                 <IonCardContent>
                                     {[...Array(5)].map((_, index) => (
                                         <IonIcon

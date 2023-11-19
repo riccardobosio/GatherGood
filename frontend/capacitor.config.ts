@@ -1,11 +1,18 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'frontend',
-  webDir: 'dist',
+  appId: 'com.example.app',
+  appName: 'VoluntariONE',
+  webDir: 'build',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    url: 'http://localhost:8100',
+    cleartext: true,
+  },
+  plugins: {
+    CapacitorHttp : {
+      enabled: true
+    }
   }
 };
 
