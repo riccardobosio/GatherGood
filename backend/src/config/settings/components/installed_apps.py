@@ -8,7 +8,8 @@ from config.settings.components import env
 DEBUG: bool = env.bool('DEBUG', default=True)
 
 DJANGO_APPS: Tuple[str, ...] = (
-    'django.contrib.admin',
+    'material',
+    'material.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -31,6 +32,8 @@ DEBUG_APPS: Tuple[str, ...] = (
 
 PROJECT_APPS: Tuple[str, ...] = (
     'apps.accounts',
+    'apps.events',
+    'apps.review'
 )
 
 INSTALLED_APPS: Tuple[str, ...] = DJANGO_APPS + SIDE_APPS + PROJECT_APPS

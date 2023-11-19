@@ -10,7 +10,6 @@ import {
     IonItem,
     IonLabel, IonList,
     IonPage,
-    IonTextarea,
     IonTitle,
     IonToolbar
 } from '@ionic/react';
@@ -51,24 +50,24 @@ const CreateEventForm: React.FC = () => {
                     <IonButtons slot="start">
                         <IonBackButton defaultHref="/events" />
                     </IonButtons>
-                    <IonTitle>Create Event</IonTitle>
+                    <IonTitle>Crear Evento</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
                 <IonList>
                     <IonItem>
                         <IonLabel>
-                            <h2>Name</h2>
+                            <h2>Título</h2>
                         </IonLabel>
-                        <IonInput placeholder="Enter event name" value={name} onIonChange={(e) => setName(e.detail.value!)} />
+                        <IonInput placeholder="Introducir un título" value={name} onIonChange={(e) => setName(e.detail.value!)} />
                     </IonItem>
 
                     <IonItem>
                         <IonLabel>
-                            <h2>Description</h2>
+                            <h2>Descripción</h2>
                         </IonLabel>
                         <IonInput
-                            placeholder="Enter event description"
+                            placeholder="Introducir una descripción"
                             value={description}
                             onIonChange={(e) => setDescription(e.detail.value!)}
                         />
@@ -76,17 +75,17 @@ const CreateEventForm: React.FC = () => {
 
                     <IonItem>
                         <IonLabel>
-                            <h2>Location</h2>
+                            <h2>Ubicación</h2>
                         </IonLabel>
-                        <IonInput placeholder="Enter event location" value={location} onIonChange={(e) => setLocation(e.detail.value!)} />
+                        <IonInput placeholder="Introducir una ubicación" value={location} onIonChange={(e) => setLocation(e.detail.value!)} />
                     </IonItem>
 
                     <IonItem>
                         <IonLabel>
-                            <h2>Max People</h2>
+                            <h2>Max. nº personas</h2>
                         </IonLabel>
                         <IonInput
-                            placeholder="Enter max number of people"
+                            placeholder="Introducir máximo número de personas"
                             type="number"
                             value={maxPeople}
                             onIonChange={(e) => setMaxPeople(parseInt(e.detail.value!, 10))}
@@ -95,7 +94,6 @@ const CreateEventForm: React.FC = () => {
 
                     <IonItem>
                         <IonDatetime
-                            placeholder="Select event date and time"
                             min={getCurrentDateTime()}
                             max="2030"
                             value={date}
@@ -105,7 +103,7 @@ const CreateEventForm: React.FC = () => {
 
                     <IonItem className="ion-text-center" lines="none">
                         <IonButton expand="full" onClick={handleSubmit} disabled={!name || !description || !location || !maxPeople || !date}>
-                            Create Event
+                            Crear Evento
                         </IonButton>
                     </IonItem>
                 </IonList>

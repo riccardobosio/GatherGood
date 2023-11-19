@@ -23,7 +23,7 @@ export function formatDate(inputDate: string, includeTime: boolean = true): stri
         delete options.timeZoneName;
     }
 
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString('es-ES', options);
 }
 
 

@@ -1,5 +1,6 @@
 // src/pages/UserProfilePage.tsx
 import React, {useState} from 'react';
+import React, {useState} from 'react';
 import {
     IonPage,
     IonContent,
@@ -13,6 +14,10 @@ import {
     IonButtons,
     IonBackButton,
     IonList,
+    IonTitle,
+    IonButtons,
+    IonBackButton,
+    IonList,
 } from '@ionic/react';
 import { User } from '../api/types';
 import {useUser} from "../hooks/useUser";
@@ -21,6 +26,7 @@ import authenticationService from '../api/services/authentication';
 import { useHistory } from 'react-router';
 
 const UserProfilePage: React.FC = () => {
+    const { user} = useUser();
     const { user} = useUser();
     const [editedUser, setEditedUser] = useState<User | null | undefined>(user);
     const history = useHistory();
@@ -98,6 +104,8 @@ const UserProfilePage: React.FC = () => {
                         </IonButton>
                     </IonItem>
 
+                </IonList>
+            </IonContent>
                 </IonList>
             </IonContent>
         </IonPage>

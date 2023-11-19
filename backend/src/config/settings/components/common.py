@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+from os.path import abspath, dirname, join
 from typing import List, Tuple
-from os.path import join, abspath, dirname
 
 from django.utils.translation import gettext_lazy as _
 
@@ -95,3 +95,15 @@ DJANGO_SUPERUSER_EMAIL: str = env.str("DJANGO_SUPERUSER_EMAIL")
 DJANGO_SUPERUSER_PASSWORD: str = env.str("DJANGO_SUPERUSER_PASSWORD")
 DJANGO_SUPERUSER_FIRST_NAME: str = env.str("DJANGO_SUPERUSER_FIRST_NAME")
 DJANGO_SUPERUSER_LAST_NAME: str = env.str("DJANGO_SUPERUSER_LAST_NAME")
+
+# ML model
+
+import gensim.downloader as api
+import nltk
+
+# Download and load a pre-trained word embedding model
+RECOMMENDER_MODEL = api.load('glove-wiki-gigaword-100')  # A medium-sized model
+
+# Ensure you have the NLTK stopwords dataset downloaded
+nltk.download('punkt')
+nltk.download('stopwords')
