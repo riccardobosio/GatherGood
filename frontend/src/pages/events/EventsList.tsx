@@ -74,6 +74,7 @@ const EventsList: React.FC = () => {
                 <IonHeader collapse="condense">
                     <IonToolbar>
                         <IonTitle size="large">Eventos</IonTitle>
+                        <IonTitle size="large">Eventos</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 {/* Copied this cause got no time */}
@@ -105,6 +106,7 @@ const EventsList: React.FC = () => {
                             <IonCardHeader>
                                 <IonCardTitle>{event.name}</IonCardTitle>
                                 <IonCardSubtitle>{event.location}, {formatDate(event.date)}</IonCardSubtitle>
+                                <IonCardSubtitle>{event.location}, {formatDate(event.date)}</IonCardSubtitle>
                             </IonCardHeader>
                             <IonCardContent>
                                 <p>{event.description}</p>
@@ -112,6 +114,7 @@ const EventsList: React.FC = () => {
                                     <IonRow>
                                         <IonCol className="ion-text-end">
                                             <IonButton onClick={() => viewEventDetails(event)}>
+                                                Ver Evento
                                                 Ver Evento
                                             </IonButton>
                                         </IonCol>

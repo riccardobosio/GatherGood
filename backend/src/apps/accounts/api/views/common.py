@@ -1,7 +1,7 @@
 from typing import Any, Dict, Tuple
 
-from rest_framework import exceptions as rest_exceptions
 from django.core.exceptions import ValidationError
+from rest_framework import exceptions as rest_exceptions
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 

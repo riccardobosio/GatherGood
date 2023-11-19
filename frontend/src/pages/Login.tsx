@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonInput, IonButton, IonItem, IonLabel, IonApp, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonInput, IonButton, IonItem, IonLabel, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router';
 import SignupForm from "../components/Signup";
 import { useUser } from "../hooks/useUser";
@@ -37,7 +37,7 @@ const Form: React.FC = () => {
                             <h2>Nos alegra verte de nuevo!</h2>
                             <form className='login-form' onSubmit={handleSubmit}>
                                 <IonItem>
-                                    <IonLabel position="floating">Email</IonLabel>
+                                    <IonLabel position="floating">Correo</IonLabel>
                                     <IonInput
                                         name="email"
                                         value={formData.email}
@@ -47,7 +47,7 @@ const Form: React.FC = () => {
                                     />
                                 </IonItem>
                                 <IonItem>
-                                    <IonLabel position="floating">Password</IonLabel>
+                                    <IonLabel position="floating">Contraseña</IonLabel>
                                     <IonInput
                                         name="password"
                                         value={formData.password}

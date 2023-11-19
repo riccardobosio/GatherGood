@@ -1,18 +1,15 @@
 """
 URLs configuration
 """
-from drf_yasg import openapi
+from dj_rest_auth.jwt_auth import get_refresh_view
+from dj_rest_auth.views import (LoginView, LogoutView, PasswordChangeView,
+                                PasswordResetConfirmView, PasswordResetView)
 from django.conf import settings
-from django.urls import path, include
 from django.contrib import admin
+from django.urls import include, path
+from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
-from dj_rest_auth.views import (LoginView,
-                                LogoutView,
-                                PasswordResetView,
-                                PasswordChangeView,
-                                PasswordResetConfirmView)
-from dj_rest_auth.jwt_auth import get_refresh_view
 
 from config.settings.components.yasg_schemas import SchemaGenerator
 
@@ -28,6 +25,8 @@ api_authentication = [
 api_urlpatterns = [
     path('', include('apps.accounts.api.urls'), name='user_api'),
     path('auth/', include(api_authentication)),
+    path('', include('apps.events.api.urls'), name='event_api'),
+    path('reviews/', include('apps.review.api.urls'), name='review_api'),
 ]
 
 urlpatterns = [

@@ -1,6 +1,8 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
+
 from apps.accounts.models.user import User
+from apps.review.serializers import ReviewDetailOutputSerializer
 
 
 class StrictReadOnlyFieldsMixin:
@@ -87,3 +89,25 @@ class UserDetailSerializer(
 
 class ProfileDeleteInputSerializer(serializers.Serializer):
     password = serializers.CharField()
+
+
+class UserReviewDetailSerializer(serializers.ModelSerializer):
+    reviews = ReviewDetailOutputSerializer(many=True, read_only=True, source='reviews_as_reviewee')
+
+    class Meta:
+        model = User
+        fields = ('email', 'first_name', 'last_name', 'reviews')
+
+
+class RegistrationInputSerializer(serializers.ModelSerializer):
+    password_confirm = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+            'password_confirm',
+        )

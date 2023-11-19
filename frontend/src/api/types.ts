@@ -36,6 +36,14 @@ export interface User {
     reviews: Review[];
 }
 
+export interface UserCreate {
+    email: string;
+    first_name: string;
+    last_name: string;
+    password: string;
+    password_confirm: string;
+}
+
 export interface Event {
     id: string;
     name: string;
@@ -57,7 +65,7 @@ export interface Participant {
 
 export interface Review {
     id: string;
-    reviewee: string;
+    reviewer_name: string;
     rate: number;
     description: string;
     created_at: string;
