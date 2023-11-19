@@ -6,6 +6,7 @@ import { useUser } from "../hooks/useUser";
 import './intro/IndexIntro.css';
 import l from '../assets/animations/login-intro2.json';
 import Lottie from 'lottie-react';
+import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 
 interface FormData {
     email: string;
@@ -18,13 +19,30 @@ const Form: React.FC = () => {
     const history = useHistory();
     const { login } = useUser();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const handleChange = (event: CustomEvent) => {
+        const target = event.target as HTMLInputElement;  // Typecasting the target
+        const name = target.name;
+        const value = target.value;
+        setFormData(prevForm => ({ ...prevForm, [name]: value }));
     };
 
+    const doPost = async() => {
+        const response: HttpResponse = await CapacitorHttp.post({
+            url: `http://localhost:8000/api/auth/login/`,
+            headers: { 'Content-Type': 'application/json' },
+            data: formData
+        }).then(res => {return res}).catch(err => {return err});
+
+        if(response.status === 200) {
+            history.push("/events");
+        }
+    }
+
     const handleSubmit = (e: React.FormEvent) => {
+        login(formData.email, formData.password).then(() => history.push('/events')).catch(err => console.log(err));
+        doPost();
         e.preventDefault();
-        login(formData.email, formData.password).then(() => history.push('/events'));
     };
 
     return (
@@ -33,16 +51,16 @@ const Form: React.FC = () => {
                 <IonRow className='centered-content'>
                     <IonCol size-xs="12" size-sm="10" size-md="6" size-lg="4">
                         <div className="form-container">
-                        <Lottie style={{ width: '100%', height: '200px'}} loop={true} animationData={l} />
+                            <Lottie style={{ width: '100%', height: '200px' }} loop={true} animationData={l} />
                             <h2>Nos alegra verte de nuevo!</h2>
                             <form className='login-form' onSubmit={handleSubmit}>
                                 <IonItem>
                                     <IonLabel position="floating">Correo</IonLabel>
                                     <IonInput
                                         name="email"
+                                        type="email"
                                         value={formData.email}
                                         onIonChange={handleChange}
-                                        type="email"
                                         required
                                     />
                                 </IonItem>
