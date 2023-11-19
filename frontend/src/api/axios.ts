@@ -2,6 +2,8 @@
 import axios, {AxiosError} from "axios";
 import {AxiosRequestConfigExtended} from "./types";
 import authenticationService from "./services/authentication";
+import { CapacitorHttp } from "@capacitor/core";
+
 
 export const api = axios.create({
     baseURL: 'http://localhost:8000/api',

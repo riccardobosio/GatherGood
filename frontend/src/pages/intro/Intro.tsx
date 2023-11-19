@@ -12,11 +12,11 @@ const Intro: React.FC = () => {
       <IonContent className='centered-content'>
         <IonRow className='centered-content'>
           <IonCol size-xs="12" size-sm="10" size-md="6" size-lg="4">
-            <IonTitle className='fancy-text'>Damos la bienvenida a ComunApp</IonTitle>
+            <IonTitle className='fancy-text'>Hola!</IonTitle>
             <Lottie style={{ width: '100%', height: '300px' }} loop={true} animationData={i1} />
-            <IonButton onClick={() => history.push("/login")} expand='full' shape='round' fill='outline' className="custom-button login-btn ion-margin-top ion-padding-vertical">Iniciar Sessió</IonButton>
+            <IonButton onClick={() => history.push("/login")} expand='full' shape='round' fill='outline' className="custom-button login-btn ion-margin-top ion-padding-vertical">Iniciar Sesión</IonButton>
             <hr /> O
-            <IonButton onClick={() => history.push("/steps")} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Uneix-te a Nosaltres</IonButton>
+            <IonButton onClick={() => history.push("/steps")} expand='full' shape='round' fill='outline' className="custom-button signup-btn ion-margin-top ion-padding-vertical">Únete a nosotros</IonButton>
           </IonCol>
         </IonRow>
       </IonContent>

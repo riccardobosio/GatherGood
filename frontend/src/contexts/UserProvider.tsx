@@ -20,6 +20,7 @@ export default function UserProvider({ children }: React.PropsWithChildren) {
     const [user, setUser] = useState<User | null | undefined>();
 
     const getUser = async () => {
+
         await profileService.get()
             .then(user => setUser(user))
             .catch(() => setUser(null))

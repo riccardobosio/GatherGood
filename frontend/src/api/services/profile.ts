@@ -1,7 +1,7 @@
 
 import {AxiosResponse} from "axios";
 import {api} from "../axios";
-import AbstractService from "./abstract.js";
+import AbstractService from "./abstract";
 import {User} from "../types";
 
 class ProfileService extends AbstractService<User> {
