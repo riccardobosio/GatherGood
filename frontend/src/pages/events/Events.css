@@ -1,0 +1,33 @@
+.title-action {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  justify-content:space-around; /* Aligns items horizontally in the center */
+  border-bottom: 2px solid black;
+}
+
+.title-action * {
+  align-items: center;
+}
+
+.card-settings {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-left: 5px solid rgb(174,108,194);
+}
+
+.btn-edit {
+  --background: black;
+  --border-color: black;
+  color: white;
+}
+
+ion-title.title-edit {
+  text-align: center ;
+}
+
+.flex-settings {
+  display: flex;
+  align-items: center;
+}
+
+
