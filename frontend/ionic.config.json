@@ -1,7 +1,5 @@
 {
-  "name": "frontend",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
+  "name": "VoluntariONE",
+  "integrations": {},
+  "type": "react"
 }

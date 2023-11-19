@@ -1,4 +1,4 @@
-import AbstractService from "./abstract.js";
+import AbstractService from "./abstract";
 import {AxiosResponse} from "axios";
 import {api} from "../axios";
 import {Event} from "../types"
