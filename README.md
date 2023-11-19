@@ -1,5 +1,5 @@
 ## Gather Good
-Cross-platform open-source platform for one-to-one volunteering.
+Cross-platform open-source app for one-to-one volunteering.
 
 ## Platform details
 ### Technologies
